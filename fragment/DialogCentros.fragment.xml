@@ -1,0 +1,13 @@
+<core:FragmentDefinition xmlns:core="sap.ui.core" xmlns:mvc="sap.ui.core.mvc" xmlns="sap.m" xmlns:l="sap.ui.layout"
+	xmlns:f="sap.ui.layout.form">
+	<SelectDialog
+		id="dlgCentros"
+		noDataText="No hay centro cargados"
+		title="Seleccione un centro"
+		confirm="onSeleccionaDlgCentros"
+		close="onCloseDlgCentros"
+		items="{ path: '/Centros' }" >
+		<StandardListItem
+			title="{NAME1}" description="{WERKS}" type="Active" />
+	</SelectDialog>
+</core:FragmentDefinition>

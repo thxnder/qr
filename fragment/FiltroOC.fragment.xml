@@ -1,0 +1,47 @@
+<core:FragmentDefinition xmlns:core="sap.ui.core" xmlns:mvc="sap.ui.core.mvc" xmlns="sap.m" xmlns:l="sap.ui.layout"
+	xmlns:f="sap.ui.layout.form">
+	<Panel>
+		<f:Form editable="true">
+			<f:layout>
+				<f:ResponsiveGridLayout labelSpanL="12" labelSpanM="12" labelSpanXL="12" labelSpanS="12" columnsL="3" columnsM="3" columnsXL="3"/>
+			</f:layout>
+			<f:formContainers>
+				<!--f:FormContainer>
+					<f:formElements>
+						<f:FormElement label="Orden de Compra">
+							<f:fields>
+								<Input id="txtCodigoOC" value="{OC/CodigoOC}"/>
+							</f:fields>
+						</f:FormElement>
+					</f:formElements>
+				</f:FormContainer-->
+				<f:FormContainer>
+					<f:formElements>
+						<f:FormElement label="Orden de Compra">
+							<f:fields>
+								<Input 
+								valueLiveUpdate="true" type="Number"
+								valueStateText="{ path: '/OC/valor', formatter: '.formatter.ordenCompra.validacionMessage' }" 
+								valueState="{ path: '/OC/valor', formatter: '.formatter.ordenCompra.validacionState' }" 
+								value="{path: '/OC/valor'}"></Input>
+							</f:fields>
+						</f:FormElement>
+					</f:formElements>
+				</f:FormContainer>
+				<f:FormContainer>
+					<f:formElements>
+						<f:FormElement label=" ">
+							<f:fields>
+								<Button press="onSearchMateriales" icon="sap-icon://search">
+									<layoutData>
+										<l:GridData span="L3 M3 S6"/>
+									</layoutData>
+								</Button>
+							</f:fields>
+						</f:FormElement>
+					</f:formElements>
+				</f:FormContainer>
+			</f:formContainers>
+		</f:Form>
+	</Panel>
+</core:FragmentDefinition>

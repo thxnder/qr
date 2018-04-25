@@ -1,0 +1,29 @@
+/* Enter your custom styles here */
+
+.sap-desktop .sapTntToolPageAside,
+.sap-tablet .sapTntToolPageAside {
+    display: none;
+}
+
+.sap-desktop .sapTntToolPageMain,
+.sap-tablet .sapTntToolPageMain {
+    padding-left: 0 !important;
+}
+
+.sapMSplitContainerMaster {
+    width: 175px;
+}
+
+.TextMiddleTable {
+    margin-top: 15px;
+}
+
+.TextCenterTable {
+    text-align: center !important;
+}
+
+.CantidadTotal {
+    font-weight: bold !important;
+    margin-top: 5px !important;
+    font-size: 2rem !important;
+}
