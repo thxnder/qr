@@ -168,7 +168,7 @@ sap.ui.define([
 		        } else {
 		          outputMessage.hidden = false;
 		          outputData.parentElement.hidden = true;
-		          video.paused==true;
+		          video.stop();
 		        }
 		      }
 		      requestAnimationFrame(tick);
