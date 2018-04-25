@@ -1,0 +1,13 @@
+<core:FragmentDefinition xmlns:core="sap.ui.core" xmlns:mvc="sap.ui.core.mvc" xmlns="sap.m" xmlns:l="sap.ui.layout"
+	xmlns:f="sap.ui.layout.form">
+	<Panel visible="{/hideRadioButton}">
+		<VBox>
+			<RadioButtonGroup columns="2" width="100%">
+				<buttons>
+					<RadioButton id="rbIndividual" text="Individual" selected="{/isIndividual}"/>
+					<RadioButton id="rbColectivo" text="Colectivo" selected="{= !${/isIndividual} }"/>
+				</buttons>
+			</RadioButtonGroup>
+		</VBox>
+	</Panel>
+</core:FragmentDefinition>

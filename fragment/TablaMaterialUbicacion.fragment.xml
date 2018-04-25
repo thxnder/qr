@@ -1,0 +1,45 @@
+<core:FragmentDefinition xmlns:core="sap.ui.core" xmlns:mvc="sap.ui.core.mvc" xmlns="sap.m" xmlns:l="sap.ui.layout"
+	xmlns:f="sap.ui.layout.form">
+	<Panel>
+		<Table inset="false" items="{ path: '/Materiales', sorter: [{ path: 'CodMaterial' },{ path: 'Item' }] }">
+			<headerToolbar>
+				<Toolbar>
+					<Button text="Ver mapa" textDirection="LTR" press="onVerMapa" icon="sap-icon://map-3"/>
+					<ToolbarSpacer/>
+					<Input visible="{= !${/isIndividual} }" enabled="false" width="200px" value=""/>
+					<Button text="Ubicación" visible="{= !${/isIndividual} }" press="onVerUbicaciones"/>
+				</Toolbar>
+			</headerToolbar>
+			<columns>
+				<!--Column width="30px" demandPopin="false">
+					<Text textAlign="Center" text="Item"/>
+				</Column-->
+				<Column demandPopin="false">
+					<Text textAlign="Center" text="Material"/>
+				</Column>
+				<Column visible="{/isIndividual}" width="100px" demandPopin="false">
+					<Text textAlign="Center" text="Cantidad total"/>
+				</Column>
+				<Column width="100px" demandPopin="false">
+					<Text textAlign="Center" text="Cantidad"/>
+				</Column>
+				<Column visible="{/isIndividual}" width="130px" demandPopin="false">
+					<Text textAlign="Center" text="Ubicacion"/>
+				</Column>
+			</columns>
+			<items>
+				<ColumnListItem>
+					<cells>
+						<!--Text width="30px" class="TextMiddleTable TextCenterTable" textAlign="Center" text="{Item}" /-->
+						<!--ObjectIdentifier title="{= ${Item} === 1 ? ${CodMaterial} : '' }" text="{= ${Item} === 1 ? ${Material} : '' }"/-->
+						<ObjectIdentifier title="{ path: 'CodMaterial', formatter: '.formatter.material.display' }" text="{Material}"/>
+						<Text visible="{/isIndividual}" class="TextMiddleTable CantidadTotal" width="80px" textAlign="Center" text="{= ${Item} === 1 ? ${CantidadTotal} : '' }" />
+						<Input enabled="{/isIndividual}" valueLiveUpdate="true" liveChange="liveChangeUbicaciones" type="Number" textAlign="Center" width="120px" value="{Cantidad}" valueStateText="{ path: 'cantidadMensaje' }" 
+								valueState="{ path: 'cantidadEstado' }" description="{UM}"/>
+						<Input textAlign="Center" width="130px" visible="{/isIndividual}" valueHelpRequest="onVerUbicaciones"  enabled="{= ${Cantidad} > 0 }" showValueHelp="{= ${Cantidad} > 0 }" value="{Ubicacion}"/>
+					</cells>
+				</ColumnListItem>
+			</items>
+		</Table>
+	</Panel>
+</core:FragmentDefinition>
