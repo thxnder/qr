@@ -67,7 +67,7 @@ sap.ui.define([
 			}
 		},
 
-		/******Inicio Alternativa QR******/
+		
 		createDeviceModel: function() {
 		    var oModel = new JSONModel(Device);
 		    oModel.setDefaultBindingMode("OneWay");
@@ -85,6 +85,7 @@ sap.ui.define([
 		    
 		    return oModel;
 		},
+		/******Inicio Alternativa QR 2******/
         onScanForValue: function(oEvent){
 		        var _oScanDialog = new sap.m.Dialog({
 		            title               : "Scanner QR",
@@ -95,11 +96,13 @@ sap.ui.define([
 		            stretchOnPhone      : true,
 		            content             : [new sap.ui.core.HTML({
 		                id      : this.createId("scanContainer"),
-		                content : "<div id='loadingMessage'>🎥 Unable to access video stream (please make sure you have a webcam enabled)</div><canvas id='canvas' hidden></canvas><div id='output' hidden>    <div id='outputMessage'>No QR code detected.</div>    <div hidden><b>Data:</b> <span id='outputData'></span></div>  </div>"
+		                content : "<video id='video1' style='display:none'></video><div id='loadingMessage'>🎥 Unable to access video stream (please make sure you have a webcam enabled)</div><canvas id='canvas' hidden></canvas><div id='output' hidden>    <div id='outputMessage'>No QR code detected.</div>    <div hidden><b>Data:</b> <span id='outputData'></span></div>  </div>"
 		            })],
 		            endButton           : new sap.m.Button({
 		                text    : "Cancel",
 		                press   : function(oEvent){
+		                	var videoElem = document.getElementById("video1");
+							this.stopStreamedVideo(videoElem);
 		                    _oScanDialog.destroy();
 		                }.bind(this)
 		            }),
@@ -113,9 +116,20 @@ sap.ui.define([
 		    _oScanDialog.open();
 		    
 		},
-		/******Inicio Alternativa QR 2******/
+		stopStreamedVideo:function(videoElem) {
+			let stream = videoElem.srcObject;
+			let tracks = stream.getTracks();
+
+			tracks.forEach(function(track) {
+			    track.stop();
+			});
+
+			videoElem.srcObject = null;
+		},
 		onBtnScan:function(_oScanDialog){
-			var video = document.createElement("video");
+			//var video = document.createElement("video");
+			//video.setAttribute("id", "video1");
+			var video = document.getElementById("video1");
 		    var canvasElement = document.getElementById("canvas");
 		    var canvas = canvasElement.getContext("2d");
 		    var loadingMessage = document.getElementById("loadingMessage");
@@ -162,8 +176,8 @@ sap.ui.define([
 				          outputData.parentElement.hidden = false;
 				          outputData.innerText = code.data;*/
 				          self.getView().byId("scannedValue").setValue(code.data);
+				          self.stopStreamedVideo(video);
 				          _oScanDialog.destroy();
-				          video.stop();
 			          }
 		        } else {
 		          outputMessage.hidden = false;
