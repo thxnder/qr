@@ -13,6 +13,11 @@
 					<VBox class="sapUiSmallMargin">
 						<f:SimpleForm editable="true" id="frmLogin" layout="ResponsiveGridLayout" title="Login" labelSpanL="3" labelSpanM="3" emptySpanL="4" emptySpanM="4" columnsL="1" columnsM="1">
 							<f:content>
+								<Button icon="sap-icon://" text="Scan" tooltip="Geolocalización" visible="true" press="onBtnLocalizacion">
+								    <layoutData>
+								        <l:GridData span="L2 M2" />
+								    </layoutData>
+								</Button>
 								<SearchField id="scannedValue" placeholder="" showSearchButton="false" editable="{= !${device>/barcodeScanEnabled} }" />
 								<Button icon="sap-icon://bar-code" text="Scan" tooltip="Scan barcode" visible="{device>/barcodeScanEnabled}" press="onScanForValue">
 								    <layoutData>
