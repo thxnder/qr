@@ -101,8 +101,7 @@ sap.ui.define([
 		            endButton           : new sap.m.Button({
 		                text    : "Cancel",
 		                press   : function(oEvent){
-		                	var videoElem = document.getElementById("video1");
-							this.stopStreamedVideo(videoElem);
+							this.stopStreamedVideo(document.getElementById("video1"));
 		                    _oScanDialog.destroy();
 		                }.bind(this)
 		            }),
@@ -176,7 +175,7 @@ sap.ui.define([
 				          outputData.parentElement.hidden = false;
 				          outputData.innerText = code.data;*/
 				          self.getView().byId("scannedValue").setValue(code.data);
-				          self.stopStreamedVideo(video);
+				          self.stopStreamedVideo(document.getElementById("video1"));
 				          _oScanDialog.destroy();
 			          }
 		        } else {
