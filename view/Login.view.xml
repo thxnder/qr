@@ -13,7 +13,7 @@
 					<VBox class="sapUiSmallMargin">
 						<f:SimpleForm editable="true" id="frmLogin" layout="ResponsiveGridLayout" title="Login" labelSpanL="3" labelSpanM="3" emptySpanL="4" emptySpanM="4" columnsL="1" columnsM="1">
 							<f:content>
-								<Button icon="sap-icon://" text="Scan" tooltip="Geolocalización" visible="true" press="onBtnLocalizacion">
+								<Button icon="sap-icon://" text="Geolocalización" tooltip="Geolocalización" visible="true" press="onBtnLocalizacion">
 								    <layoutData>
 								        <l:GridData span="L2 M2" />
 								    </layoutData>
