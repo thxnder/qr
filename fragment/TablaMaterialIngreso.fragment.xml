@@ -1,0 +1,39 @@
+<core:FragmentDefinition xmlns:core="sap.ui.core" xmlns:mvc="sap.ui.core.mvc" xmlns="sap.m" xmlns:l="sap.ui.layout"
+	xmlns:f="sap.ui.layout.form">
+	<Panel>
+		<Table inset="false" items="{ path: '/Materiales' , sorter: { path: 'CodMaterial' } }">
+			<columns>
+				<Column width="80px" demandPopin="false">
+					<CheckBox select="onCheckMateriales" id="checkMateriales" selected="false"/>
+				</Column>
+				<Column demandPopin="false">
+					<Text textAlign="Center" text="Material"/>
+				</Column>
+				<Column width="120px" demandPopin="false">
+					<Text textAlign="Center" text="Almacén"/>
+				</Column>
+				<Column visible="{/DistintoIngreso}" width="100px" demandPopin="false">
+					<Text textAlign="Center" text="Lote"/>
+				</Column>
+				<Column width="120px" demandPopin="false">
+					<Text textAlign="Center" text="Cantidad"/>
+				</Column>
+				<Column width="80px" visible="{/isIndividual}" demandPopin="false">
+					<Text textAlign="Center" text="N° Ubic."/>
+				</Column>
+			</columns>
+			<items>
+				<ColumnListItem>
+					<cells>
+						<CheckBox selected="{Seleccionado}"/>
+						<ObjectIdentifier title="{ path: 'CodMaterial', formatter: '.formatter.material.display' }" text="{Material}"/>
+						<Text class="TextMiddleTable" width="80px" textAlign="Center" text="{Almacen}" />
+						<Text visible="{/DistintoIngreso}" class="TextMiddleTable" width="80px" textAlign="Center" text="{Lote}" />
+						<Text class="TextMiddleTable" textAlign="Center" text="{Cantidad} {UM}"/>
+						<Input type="Number" liveChange="liveChangeUbicaciones" textAlign="Center" width="80px" visible="{/isIndividual}" value="{NUbicaciones}"/>
+					</cells>
+				</ColumnListItem>
+			</items>
+		</Table>
+	</Panel>
+</core:FragmentDefinition>
