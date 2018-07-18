@@ -8,8 +8,9 @@ sap.ui.define([
 	"com/decor/ubicaciones/controladores",
 	"com/decor/ubicaciones/formatter/formatter",
 	"com/decor/ubicaciones/validacion/validaciones",
-	"jquery.sap.global"
-], function (BaseController, UIComponent, models, utilController, utilUI, services,controladores,formatter,validaciones,jQuery) {
+	"jquery.sap.global",
+	"sap/ui/model/json/JSONModel"
+], function (BaseController, UIComponent, models, utilController, utilUI, services,controladores,formatter,validaciones,jQuery,JSONModel) {
 	"use strict";
 
 	return BaseController.extend("com.decor.ubicaciones.controller.Login", {
