@@ -1,0 +1,89 @@
+<core:FragmentDefinition 
+    xmlns:core="sap.ui.core" 
+    xmlns:mvc="sap.ui.core.mvc" 
+    xmlns="sap.m"
+     xmlns:l="sap.ui.layout" 
+     xmlns:f="sap.ui.layout.form"
+    xmlns:t="sap.ui.table" 
+    xmlns:s="sap.m.semantic" 
+    xmlns:custom="http://schemas.sap.com/sapui5/extension/sap.ui.core.CustomData/1"
+    xmlns:tnt="sap.tnt">
+        
+
+
+
+    <Dialog title="Pedidos Multiples"  id="dlg_DialogPedidosMultiples" class="cabecera_dialogo"  stretchOnPhone="true" contentWidth="40%"
+                    contentHeight="30%">
+
+        <content>
+
+            <List id="listaPedidosMultiples" mode="SingleSelectMaster" growing="false" growingThreshold="30" growingDirection="Upwards" indicatorDelete="false" indicadorSelect="false" busyIndicatorDelay="200" includeItemInSelection="true" class="listaMasterMateriales" enableBusyIndicator="false" growingTriggerText="Previous Products" noDataText="No hay Productos" itemPress="onSelectItemProducto"
+                              items="{
+                        path : '/listaPedidosMultiples'
+                        }"
+                ><!--includeItemInSelection="true"-->
+                
+                
+
+                <CustomListItem height="auto" change="onSelectItemProducto">
+                <FlexBox
+                        alignItems="Start"
+                        justifyContent="SpaceBetween" >
+                        <items>
+                                <FlexBox
+                        alignItems="Start">
+                        <items>
+                                <FlexBox
+                                                height="38px"
+                                            alignItems="End">
+                                                <items>
+                                
+                            </items>
+                        </FlexBox>
+                                <VBox justifyContent="Center" width="35px">
+                                </VBox>
+                                
+                                <Text width="100%"  text="{descripcion}">
+                                    <layoutData>
+                                <FlexItemData growFactor="3" />
+                            </layoutData>
+                                </Text>
+
+                                </items>
+                            </FlexBox>
+
+
+                                <VBox justifyContent="Center" width="35px">
+                                </VBox>
+
+                                <FlexBox
+                                    height="45px"
+                        alignItems="End"
+                        justifyContent="End">
+                        <items>
+                                <Text text="{numPedido}"></Text>
+                                <Button width="100%" height="auto"  type="Transparent" icon="sap-icon://navigation-right-arrow" press="onListaMaterialesPedidosMultiples">
+                                    <layoutData>
+                                <FlexItemData growFactor="2" />
+                            </layoutData>
+                                </Button>
+                            </items>
+                            </FlexBox>
+
+                    </items>
+                </FlexBox>
+                </CustomListItem>
+
+                
+                </List>
+        </content>
+
+         <buttons>
+            <Button text="Cancel" class="btn_cancelar" type="Reject" icon="sap-icon://sys-cancel" press="onCloseGenPedidoMultiplesDlg_DialogDocModificar"/>
+        </buttons>
+
+    </Dialog>
+
+
+        
+    </core:FragmentDefinition>

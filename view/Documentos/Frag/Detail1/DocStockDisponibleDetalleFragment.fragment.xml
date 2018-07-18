@@ -1,0 +1,74 @@
+<core:FragmentDefinition 
+    xmlns:core="sap.ui.core" 
+    xmlns:mvc="sap.ui.core.mvc" 
+    xmlns="sap.m"
+     xmlns:l="sap.ui.layout" 
+     xmlns:f="sap.ui.layout.form"
+    xmlns:t="sap.ui.table" 
+    xmlns:s="sap.m.semantic" 
+    xmlns:custom="http://schemas.sap.com/sapui5/extension/sap.ui.core.CustomData/1">
+    
+          
+            
+    <s:DetailPage title="Detalle Stock Disponible" id="DocStockDisponibleDetalle">
+        <s:content>
+            <ObjectHeader backgroundDesign="Solid" intro="{/CentroClaseModel/Werks}" title="Cliente Eventual La Molina"
+                number="{/MaterialModel/material/descripcion_cantidad}" numberUnit="{/MaterialModel/material/Meins}">
+                <attributes>
+                    <ObjectAttribute title="Código" text="{/itemProductoModel/codigo}"/>
+                    <ObjectAttribute title="Cantidad" text="{/itemProductoModel/cantidad}"/>
+                    <ObjectAttribute title="Cantidad Rendimiento" text="{/itemProductoModel/cantidadRendimiento}"/>
+                    <ObjectAttribute title="Centro/Almacen/Lote" text="{/itemProductoModel/centro} / {/itemProductoModel/almacen} / {/itemProductoModel/lote}"/>
+                    <ObjectAttribute title="Peso" text="{/itemProductoModel/peso}"/>
+                    <ObjectAttribute title="Peso Total" text="{/itemProductoModel/pesoTotal}"/>
+                    <ObjectAttribute title="Precio Unitario" text="{/itemProductoModel/precioUnitario}"/>
+                    <ObjectAttribute title="Subtotal" text="{/itemProductoModel/subTotal}"/>
+                    <ObjectAttribute title="Descuentos" text="{/itemProductoModel/descuentos}"/>
+                </attributes>
+            </ObjectHeader>
+            <IconTabBar expandable="false" headerMode="Inline" upperCase="false" expanded="{device&gt;/isNoPhone}" class="sapUiResponsiveContentPadding">
+                <items>
+                    <IconTabFilter text="Descuentos">
+                        <Table>
+                            <columns>
+                                <Column>
+                                    <Text text="Denominación"></Text>
+                                </Column>
+                                <Column>
+                                    <Text text="Máximo"></Text>
+                                </Column>
+                                <Column>
+                                    <Text text="%"></Text>
+                                </Column>
+                                <Column>
+                                    <Text text="Total"></Text>
+                                </Column>
+                            </columns>
+                        </Table>
+                    </IconTabFilter>
+                    <IconTabFilter text="Reparto">
+                        <Table>
+                            <columns>
+                                <Column>
+                                    <Text text="Fecha Entrega"></Text>
+                                </Column>
+                                <Column>
+                                    <Text text="Cantidad"></Text>
+                                </Column>
+                                <Column>
+                                    <Text text="Confirmado"></Text>
+                                </Column>
+                            </columns>
+                        </Table>
+                    </IconTabFilter>
+                </items>
+            </IconTabBar>
+        </s:content>
+        <s:pagingAction>
+            <Button icon="sap-icon://save" tooltip="Guardar"/>
+        </s:pagingAction>
+        <s:printAction>
+            <s:PrintAction press="onDocNuevoSemanticButtonPress"/>
+        </s:printAction>
+    </s:DetailPage>
+</core:FragmentDefinition>

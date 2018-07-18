@@ -1,0 +1,97 @@
+<core:FragmentDefinition 
+    xmlns:core="sap.ui.core" 
+    xmlns:mvc="sap.ui.core.mvc" 
+    xmlns="sap.m"
+     xmlns:l="sap.ui.layout" 
+     xmlns:f="sap.ui.layout.form"
+    xmlns:t="sap.ui.table" 
+    xmlns:s="sap.m.semantic" 
+    xmlns:sf="sap.f.semantic"
+    xmlns:custom="http://schemas.sap.com/sapui5/extension/sap.ui.core.CustomData/1">
+    
+    <s:DetailPage title="Lista Plan Facturación" id="pagDocPlan_facturacion_detail1" class="cabecera_semanticDetail">
+    <s:customHeaderContent>
+            <Button icon="sap-icon://cart" type="Transparent" press="onDocNuevoMasterProductos" class="btnSemanticEstilo"></Button>
+            <Button  type="Transparent" enabled="false" class="btnSemanticEstilo"></Button>
+            <Button icon="sap-icon://save"  tooltip="Guardar" press="onBtnGuardarDocumento" visible="{/pedido/enabledBtnGuardar}"/>
+                </s:customHeaderContent>               
+        <sf:SemanticPage
+        headerPinnable="false"
+        toggleHeaderOnTitleClick="false"
+        preserveHeaderStateOnScroll="false"
+        showFooter="false" class="SemanticPageEstilo">
+
+            <!-- Title Heading-->
+        <sf:titleHeading>
+            <Title text="{/clienteEventual/nombreCliente}" />
+        </sf:titleHeading>
+
+        <!-- Header Content -->
+        <sf:headerContent>
+                    <FlexBox
+                        alignItems="Start"
+                        justifyContent="Start">
+                        <items>
+                                <FlexBox
+                                                height="38px"
+                                            alignItems="End">
+                                                <items>
+                                <ObjectAttribute title="Código" text=" {/clienteEventual/codigoCliente}"/>
+                            </items>
+                        </FlexBox>
+                        </items>
+                    </FlexBox>
+                    <!--FlexBox
+                        alignItems="Start"
+                        justifyContent="End" width="95%">
+                        <items>
+                                <Button icon="sap-icon://cart" type="Transparent" press="onDocNuevoMasterProductos" class="btnSemanticEstilo"></Button>
+
+                        </items>
+                    </FlexBox-->
+                                   
+         </sf:headerContent>
+
+        <!-- Content -->
+        <sf:content>
+            
+                
+            <List id="idPlanFacturacion" mode="SingleSelectMaster" selectionChange="" busyIndicatorDelay="200" enableBusyIndicator="false" growingTriggerText="Previous Products" noDataText="No hay Plan de Facturación" 
+                              itemPress=""  
+                              items="{
+                        path : '/planFacturacion'
+                        }">
+                            <headerToolbar>
+                                <OverflowToolbar >
+                                    <OverflowToolbarButton text="Add" icon="sap-icon://add" press="onAgregarPlanFacturacionDet"/>
+                                    <OverflowToolbarButton text="Edit" icon="sap-icon://edit" press="onEditarPlanFacturacionDet"/>
+                                    <OverflowToolbarButton text="Delete" icon="sap-icon://delete" press="onBorrarPlanFacturacionDet"/>
+                                </OverflowToolbar>
+                            </headerToolbar>
+                            <items>
+                                <ObjectListItem                                    
+                                    title="Procentaje %: {FPROZ} \n Valor Fact.: {FAKWR}" press="">
+                                </ObjectListItem>
+                            </items>
+                                                                                    
+                        </List>
+
+        </sf:content>
+
+        <!--sf:titleMainAction>
+            <sf:TitleMainAction text="Edit"/>
+        </sf:titleMainAction-->
+
+        
+
+        <!-- Custom Title Icon Content-->
+        <!--sf:titleCustomIconActions >
+            <OverflowToolbarButton icon="sap-icon://cart" text="cart" />
+        </sf:titleCustomIconActions-->
+
+</sf:SemanticPage>
+<!--s:pagingAction>
+            <Button icon="sap-icon://save"  tooltip="Guardar" press="onBtnGuardarDocumento" visible="{/pedido/enabledBtnGuardar}"/>
+        </s:pagingAction-->
+    </s:DetailPage>
+</core:FragmentDefinition>

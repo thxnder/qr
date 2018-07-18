@@ -1,0 +1,311 @@
+<core:FragmentDefinition 
+    xmlns:core="sap.ui.core" 
+    xmlns:mvc="sap.ui.core.mvc" 
+    xmlns="sap.m"
+     xmlns:l="sap.ui.layout" 
+     xmlns:f="sap.ui.layout.form"
+    xmlns:t="sap.ui.table" 
+    xmlns:s="sap.m.semantic" 
+    xmlns:sf="sap.f.semantic"
+    xmlns:custom="http://schemas.sap.com/sapui5/extension/sap.ui.core.CustomData/1">
+
+    
+    <s:DetailPage title="Datos de Visita" id="pagDocNuevo_datos_detail4" class="cabecera_semanticDetail">
+        <s:customHeaderContent>
+            <Button icon="sap-icon://cart" type="Transparent" press="onDocNuevoMasterProductos" class="btnSemanticEstilo"></Button>
+            <Button  type="Transparent" enabled="false" class="btnSemanticEstilo"></Button>
+            <Button icon="sap-icon://save"  tooltip="Guardar" press="onBtnGuardarDocumento" visible="{/pedido/enabledBtnGuardar}"/>
+                </s:customHeaderContent>       
+        <sf:SemanticPage
+        headerPinnable="false"
+        toggleHeaderOnTitleClick="false"
+        preserveHeaderStateOnScroll="false"
+        showFooter="false" class="SemanticPageEstilo">
+
+            <!-- Title Heading-->
+        <sf:titleHeading>
+            <Title text="{/clienteEventual/nombreCliente}" />
+        </sf:titleHeading>
+
+        <!-- Header Content -->
+        <sf:headerContent>
+                    <!--FlexBox
+                        alignItems="Start"
+                        justifyContent="Start">
+                        <items>
+                                <FlexBox
+                                                height="38px"
+                                            alignItems="End">
+                                                <items>
+                                <ObjectAttribute title="Código" text=" {/clienteEventual/codigoCliente}"/>
+                            </items>
+                        </FlexBox>
+                        </items>
+                    </FlexBox-->
+                    <!--FlexBox
+                        alignItems="Start"
+                        justifyContent="End" width="95%">
+                        <items>
+                                <Button icon="sap-icon://cart" type="Transparent" press="onDocNuevoMasterProductos" class="btnSemanticEstilo"></Button>
+
+                        </items>
+                    </FlexBox-->
+            <IconTabBar expandable="false" headerMode="Inline" upperCase="false" expanded="{device&gt;/isNoPhone}" class="sapUiResponsiveContentPadding">
+                <items>
+                    <IconTabFilter showAll="false" text="Datos de Visita" icon="sap-icon://contacts" design="Vertical">
+
+                        <f:Form editable="true">
+                           <!--<f:title>
+                                <core:Title text="Profesional 2" />
+                            </f:title> -->
+                            <f:layout>
+                                <f:ResponsiveGridLayout
+                                    labelSpanXL="3"
+                                    labelSpanL="3"
+                                    labelSpanM="3"
+                                    labelSpanS="5"
+                                    adjustLabelSpan="false"
+                                    emptySpanXL="4"
+                                    emptySpanL="4"
+                                    emptySpanM="4"
+                                    emptySpanS="0"
+                                    columnsXL="1"
+                                    columnsL="1"
+                                    columnsM="1"
+                                    singleContainerFullSize="false" />
+                            </f:layout>
+                            <f:formContainers>
+                                <f:FormContainer>
+                                    <f:formElements>
+                                        <f:FormElement label="Contacto">
+                                            <f:fields>
+                                                <TextArea value="{/observaciones/ZP09/Descripcion}" rows="8" enabled="{/pedido/enabled}" >
+                                                    <layoutData>
+                                                            <l:GridData span="L6 M6 S6"/>
+                                                        </layoutData>
+                                                </TextArea>
+                                            </f:fields>
+                                        </f:FormElement>
+                                        <f:FormElement label="Teléfono">
+                                            <f:fields>
+                                                <TextArea value="{/observaciones/ZP12/Descripcion}" rows="8" enabled="{/pedido/enabled}">
+                                                    <layoutData>
+                                                            <l:GridData span="L6 M6 S6"/>
+                                                        </layoutData>
+                                                </TextArea>
+                                            </f:fields>
+                                        </f:FormElement>
+                                        <f:FormElement label="Referencia de dirección">
+                                            <f:fields>
+                                                <TextArea value="{/observaciones/ZP10/Descripcion}" rows="8" enabled="{/pedido/enabled}">
+                                                    <layoutData>
+                                                            <l:GridData span="L6 M6 S6"/>
+                                                        </layoutData>
+                                                </TextArea>
+                                            </f:fields>
+                                        </f:FormElement>
+                                        <f:FormElement label="Descripción de la Visita">
+                                            <f:fields>
+                                                <TextArea value="{/observaciones/ZP13/Descripcion}" rows="8" enabled="{/pedido/enabled}">
+                                                    <layoutData>
+                                                            <l:GridData span="L6 M6 S6"/>
+                                                        </layoutData>
+                                                </TextArea>
+                                            </f:fields>
+                                        </f:FormElement>
+                                    </f:formElements>
+                                </f:FormContainer>
+                            </f:formContainers>
+                        </f:Form>
+
+                    </IconTabFilter>
+                    <IconTabFilter showAll="false" text="Result. Visita" icon="sap-icon://notes" design="Vertical">
+
+                        <f:Form editable="true">
+                           <!--<f:title>
+                                <core:Title text="Profesional 2" />
+                            </f:title> -->
+                            <f:layout>
+                                <f:ResponsiveGridLayout
+                                    labelSpanXL="3"
+                                    labelSpanL="3"
+                                    labelSpanM="3"
+                                    labelSpanS="5"
+                                    adjustLabelSpan="false"
+                                    emptySpanXL="4"
+                                    emptySpanL="4"
+                                    emptySpanM="4"
+                                    emptySpanS="0"
+                                    columnsXL="1"
+                                    columnsL="1"
+                                    columnsM="1"
+                                    singleContainerFullSize="false" />
+                            </f:layout>
+                            <f:formContainers>
+                                <f:FormContainer>
+                                    <f:formElements>
+                                        <f:FormElement label="Resultado de la Visita">
+                                            <f:fields>
+                                                <TextArea value="{/observaciones/ZP11/Descripcion}" rows="8" enabled="{/ResultVisita}">
+                                                    <layoutData>
+                                                            <l:GridData span="L6 M6 S6"/>
+                                                        </layoutData>
+                                                </TextArea>
+                                            </f:fields>
+                                        </f:FormElement>
+                                        <f:FormElement label="Fecha Resultado">
+                                            <f:fields>
+                                                <DatePicker  valueFormat="dd/MM/YYYY" displayFormat="dd/MM/YYYY"
+                                                        value="{/pedido/FechaResult}" id="date_fechaResultado_proyectoVisita" enabled="{/ResultVisita}">
+                                                        <layoutData>
+                                                            <l:GridData span="L6 M6 S6"/>
+                                                        </layoutData>
+                                                </DatePicker>
+                                            </f:fields>
+                                        </f:FormElement> 
+                                    </f:formElements>
+                                </f:FormContainer>
+                            </f:formContainers>
+                        </f:Form>
+
+                    </IconTabFilter>
+                    <!--IconTabFilter showAll="false" text="Teléfono" icon="sap-icon://iphone" design="Vertical">
+
+                        <f:Form editable="true">
+                            <f:layout>
+                                <f:ResponsiveGridLayout
+                                    labelSpanXL="3"
+                                    labelSpanL="3"
+                                    labelSpanM="3"
+                                    labelSpanS="5"
+                                    adjustLabelSpan="false"
+                                    emptySpanXL="4"
+                                    emptySpanL="4"
+                                    emptySpanM="4"
+                                    emptySpanS="0"
+                                    columnsXL="1"
+                                    columnsL="1"
+                                    columnsM="1"
+                                    singleContainerFullSize="false" />
+                            </f:layout>
+                            <f:formContainers>
+                                <f:FormContainer>
+                                    <f:formElements>
+                                        
+                                    </f:formElements>
+                                </f:FormContainer>
+                            </f:formContainers>
+                        </f:Form>
+
+                    </IconTabFilter>
+                    <IconTabFilter showAll="false" text="Descrp. Visita" icon="sap-icon://notes" design="Vertical">
+                        <f:Form editable="true">
+                            <f:layout>
+                                <f:ResponsiveGridLayout
+                                    labelSpanXL="3"
+                                    labelSpanL="3"
+                                    labelSpanM="3"
+                                    labelSpanS="5"
+                                    adjustLabelSpan="false"
+                                    emptySpanXL="4"
+                                    emptySpanL="4"
+                                    emptySpanM="4"
+                                    emptySpanS="0"
+                                    columnsXL="1"
+                                    columnsL="1"
+                                    columnsM="1"
+                                    singleContainerFullSize="false" />
+                            </f:layout>
+                            <f:formContainers>
+                                <f:FormContainer>
+                                    <f:formElements>
+                                        
+                                    </f:formElements>
+                                </f:FormContainer>
+                            </f:formContainers>
+                        </f:Form>
+                    </IconTabFilter>
+                    <IconTabFilter showAll="false" text="Result. Visita" icon="sap-icon://notes" design="Vertical">
+                        <f:Form editable="true">
+                            <f:layout>
+                                <f:ResponsiveGridLayout
+                                    labelSpanXL="3"
+                                    labelSpanL="3"
+                                    labelSpanM="3"
+                                    labelSpanS="5"
+                                    adjustLabelSpan="false"
+                                    emptySpanXL="4"
+                                    emptySpanL="4"
+                                    emptySpanM="4"
+                                    emptySpanS="0"
+                                    columnsXL="1"
+                                    columnsL="1"
+                                    columnsM="1"
+                                    singleContainerFullSize="false" />
+                            </f:layout>
+                            <f:formContainers>
+                                <f:FormContainer>
+                                    <f:formElements>
+                                        
+                                    </f:formElements>
+                                </f:FormContainer>
+                            </f:formContainers>
+                        </f:Form>
+                    </IconTabFilter>
+                    <IconTabFilter showAll="false" text="Fecha resultado" icon="sap-icon://notes" design="Vertical">
+                        <f:Form editable="true">
+                            <f:layout>
+                                <f:ResponsiveGridLayout
+                                    labelSpanXL="3"
+                                    labelSpanL="3"
+                                    labelSpanM="3"
+                                    labelSpanS="5"
+                                    adjustLabelSpan="false"
+                                    emptySpanXL="4"
+                                    emptySpanL="4"
+                                    emptySpanM="4"
+                                    emptySpanS="0"
+                                    columnsXL="1"
+                                    columnsL="1"
+                                    columnsM="1"
+                                    singleContainerFullSize="false" />
+                            </f:layout>
+                            <f:formContainers>
+                                <f:FormContainer>
+                                    <f:formElements>
+                                         
+                                    </f:formElements>
+                                </f:FormContainer>
+                            </f:formContainers>
+                        </f:Form>
+                    </IconTabFilter-->
+                </items>
+            </IconTabBar>
+        </sf:headerContent>
+
+        <!-- Content -->
+        <!--sf:content>
+            
+
+
+
+        </sf:content-->
+
+        <!--sf:titleMainAction>
+            <sf:TitleMainAction text="Edit"/>
+        </sf:titleMainAction-->
+
+        
+
+        <!-- Custom Title Icon Content-->
+        <!--sf:titleCustomIconActions >
+            <OverflowToolbarButton icon="sap-icon://cart" text="cart" />
+        </sf:titleCustomIconActions-->
+
+</sf:SemanticPage>
+
+        <!--s:pagingAction>
+            <Button icon="sap-icon://save"  tooltip="Guardar" press="onBtnGuardarDocumento" visible="{/pedido/enabledBtnGuardar}"/>
+        </s:pagingAction-->
+    </s:DetailPage>
+</core:FragmentDefinition>

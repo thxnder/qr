@@ -1,0 +1,29 @@
+<core:FragmentDefinition 
+	height="100%" 
+	xmlns:core="sap.ui.core" 
+	xmlns:mvc="sap.ui.core.mvc" 
+	xmlns="sap.m"
+    xmlns:l="sap.ui.layout" 
+    xmlns:f="sap.ui.layout.form"
+    xmlns:t="sap.ui.table" 
+    xmlns:s="sap.m.semantic" 
+    xmlns:custom="http://schemas.sap.com/sapui5/extension/sap.ui.core.CustomData/1"
+    displayBlock="true">
+
+    
+    	
+    <s:MasterPage title="Buscar Cliente" id="MasterRecNuevoInter" showNavButton="true" navButtonPress="onPressMasterBack" class="cabeceraMaster">
+               <!--s:customHeaderContent>
+                    <OverflowToolbarButton icon="sap-icon://home" text="Menu" press="goHome"/>
+                </s:customHeaderContent-->
+                
+                <List mode="SingleSelectMaster"  items="{/tipoCabeceraModel}" itemPress="onListMasterDatos">
+                            <items>
+                                <ObjectListItem title="{descripcion}" type="Active" >
+                                </ObjectListItem>
+                            </items>
+                        </List>
+            </s:MasterPage>
+
+
+    </core:FragmentDefinition>

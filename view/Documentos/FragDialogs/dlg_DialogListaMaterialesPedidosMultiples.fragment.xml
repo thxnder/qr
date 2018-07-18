@@ -1,0 +1,221 @@
+<core:FragmentDefinition 
+    xmlns:core="sap.ui.core" 
+    xmlns:mvc="sap.ui.core.mvc" 
+    xmlns="sap.m"
+     xmlns:l="sap.ui.layout" 
+     xmlns:f="sap.ui.layout.form"
+    xmlns:t="sap.ui.table" 
+    xmlns:s="sap.m.semantic" 
+    xmlns:custom="http://schemas.sap.com/sapui5/extension/sap.ui.core.CustomData/1"
+    xmlns:tnt="sap.tnt">
+        
+
+
+
+    <Dialog title="Lista Materiales" class="cabecera_buscarDoc" id="dlg_DialogListaMaterialesPedidosMultiples" contentWidth="60%" contentHeight="60%" stretch="false">
+        <customHeader>
+            <Toolbar>
+                                    <ToolbarSpacer width="2%"/>
+                                <Button class="btnSeleccionar" id="btnSelectAllPedMult" icon="sap-icon://multiselect-none" type="Emphasized"  tooltip="" press="onSeleccionarTodoMaterial" visible="false"/>
+                    <Button class="btnSeleccionar" id="btnSelectNothingPedMult" icon="sap-icon://multiselect-all" type="Emphasized"  tooltip="" press="onSeleccionarNingunMaterial" visible="false"/>
+                    <ToolbarSpacer width="34%"/>
+                        <Title text="Lista Materiales" class="colorTituloDialog"/>
+                                    
+                        </Toolbar>
+                
+            </customHeader>
+
+        <content>
+            <List id="listaMaterialesPedMulti" mode="MultiSelect" growing="false" growingThreshold="30" growingDirection="Upwards" indicatorDelete="false" indicadorSelect="true" busyIndicatorDelay="200" includeItemInSelection="true"
+            indicadorLastSelect="true"  class="listaMatPedMulti" enableBusyIndicator="false" growingTriggerText="Previous Products" noDataText="No hay Productos" selectionChange="onMatPedMult"
+                              items="{
+                        path : '/listaMaterialPedMulti'
+                        }"
+                ><!--includeItemInSelection="true"-->
+                
+                
+
+                <CustomListItem height="auto" >
+                <FlexBox
+                        alignItems="Start"
+                        justifyContent="SpaceBetween" >
+                        <items>
+                                <FlexBox
+                        alignItems="Start">
+                        <items>
+                                                                
+                                <Text width="100%" class="lblDetalleProducto" text="{Posicion} {CodMaterialCorto}  Cant: {Cantidad} - {CodUMedida} Rend: {Rendimiento} \n {DescMaterial} \n {CodCentro} {DescCentro} / {CodAlmacen} / {CodLote}">
+                                    <layoutData>
+                                <FlexItemData growFactor="3" />
+                            </layoutData>
+                                </Text>
+
+                                </items>
+                            </FlexBox>
+
+                                
+
+                                <VBox justifyContent="Center" width="35px">
+                                </VBox>
+
+                                <FlexBox
+                                    width="200px"
+                                    height="45px"
+                        alignItems="End"
+                        justifyContent="End">
+                        <items>
+                                <Label  text="Cantidad: " >
+                                    <layoutData>
+                                        <l:GridData span="L12 M12 S12"/>
+                                    </layoutData>
+                                </Label>
+                                <Input value="{Cantidad}" >
+                                </Input> 
+                            </items>
+                            </FlexBox>
+
+                    </items>
+                </FlexBox>
+                </CustomListItem>
+
+                <!--CustomListItem >
+
+
+                    <FlexBox
+                        alignItems="Start"
+                        justifyContent="SpaceBetween" >
+                        <items>
+                            <VBox>
+                            <FlexBox
+                                                height="65px"
+                                            alignItems="Start">
+                                                <items>
+                                                    <Button id="btnImagenLista" type="Transparent" icon="sap-icon://camera" press="onImagenListaProductos"/>
+                                                </items>
+                                            </FlexBox>
+                                            <layoutData>
+                                    <l:GridData
+                                        span="L1 M1 S1"/>
+                                </layoutData>
+                            </VBox>
+                            <VBox>
+                                <FlexBox
+                                alignItems="Start" class="primerBloqueDetalle">
+                                <items>
+                                                <f:Form editable="true" class="detalleListaMaterial">
+                                            <f:layout>
+                                                <f:ResponsiveGridLayout
+                                                     labelSpanXL="12"
+                                                    labelSpanL="12"
+                                                    labelSpanM="12"
+                                                    labelSpanS="12"
+                                                    adjustLabelSpan="false"
+                                                    emptySpanXL="0"
+                                                    emptySpanL="0"
+                                                    emptySpanM="0"
+                                                    emptySpanS="0"
+                                                    columnsXL="1"
+                                                    columnsL="1"
+                                                    columnsM="1"
+                                                    singleContainerFullSize="false" />
+                                            </f:layout>
+                                            <f:formContainers>
+                                                
+                                                <f:FormContainer>
+                                                    <f:formElements>
+                                                         <f:FormElement  label="{Posicion} {CodMaterialCorto} Cant: {Cantidad} - {CodUMedida} Rend: {Rendimiento}">
+                                                         </f:FormElement>
+                                                            <f:FormElement class="subirLabels"  label="{DescMaterial}"/>
+                                                            <f:FormElement class="subirLabels" label="{CodCentro} {DescCentro} / {DescAlmacen} / {CodLote}"/>
+                                                    </f:formElements>
+                                                </f:FormContainer>
+                                            </f:formContainers>
+                                        </f:Form>
+
+                            </items>
+                        </FlexBox>
+                                <layoutData>
+                                    <l:GridData
+                                        span="L7 M7 S7"/>
+                                </layoutData>
+                        </VBox>
+
+                        
+                        <VBox>
+                                <FlexBox
+                    alignItems="End" class="segundoBloqueDetalle">
+                    <items>
+
+                        <f:Form editable="true" class="detalleListaMaterial1">
+                            <f:layout>
+                                <f:ResponsiveGridLayout
+                                     labelSpanXL="12"
+                                    labelSpanL="12"
+                                    labelSpanM="12"
+                                    labelSpanS="12"
+                                    adjustLabelSpan="false"
+                                    emptySpanXL="0"
+                                    emptySpanL="0"
+                                    emptySpanM="0"
+                                    emptySpanS="0"
+                                    columnsXL="1"
+                                    columnsL="1"
+                                    columnsM="1"
+                                    singleContainerFullSize="false" />
+                            </f:layout>
+                            <f:formContainers>
+                                 <f:FormContainer>
+                                    <f:formElements>
+                                        
+                                       <f:FormElement  label="Peso Total: {Peso} - P.Unita S/IGV: {PrecioUnitario} - Dscto: %"/>
+                                        
+                                        <f:FormElement class="subirLabels" label="Tipo Mat.: {TipoMaterial} - Tipo Pos: {TipoPosicion} - Total Dscto.: {/pedido/TotalDcto} "/>
+                                        
+                                        <f:FormElement class="subirLabels" label="Prioridad Ent: {PrioridadEntrega} - {FechaCantConfStr} / SubTotal: {SubTotal} - Total C/IGV: {Total}"/>
+                                        
+                                        <f:FormElement class="subirLabels" label="Percepcion: {TotPercep} - Ambiente: {DesGrupoMat} - Opcion: {Opcion}"/>
+                                        
+                                    </f:formElements>
+                                </f:FormContainer>
+                            </f:formContainers>
+                        </f:Form>
+
+                        </items>
+                        </FlexBox>
+                       
+                                <layoutData>
+                                    <l:GridData
+                                        span="L3 M3 S3"/>
+                                </layoutData>
+                            </VBox>
+
+                            <VBox>
+                                            <FlexBox
+                                                height="65px"
+                                            alignItems="End">
+                                                <items>
+                                                    <Button id="btnDetalleProducto" type="Transparent" icon="sap-icon://navigation-right-arrow" press="onMasterProductoSeleccionarMaterial"/>
+                                                </items>
+                                            </FlexBox>
+                                            <layoutData>
+                                    <l:GridData
+                                        span="L1 M1 S1"/>
+                                </layoutData>
+                            </VBox>
+                        </items>
+                    </FlexBox>
+
+                </CustomListItem-->
+                </List>
+        </content>
+
+         <buttons>
+            <Button text="Generar Pedido" class="btn_aceptar" type="Accept" icon="sap-icon://accept" press="onGenerarPedidoMultiple" />
+            <Button text="Cancel" class="btn_cancelar" type="Reject" icon="sap-icon://sys-cancel" press="onCloseListaMaterialesPedidosMultiples"/>
+        </buttons>
+
+    </Dialog>
+
+
+        
+    </core:FragmentDefinition>

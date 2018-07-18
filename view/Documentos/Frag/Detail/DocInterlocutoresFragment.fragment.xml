@@ -1,0 +1,1233 @@
+<core:FragmentDefinition 
+   xmlns:core="sap.ui.core" 
+    xmlns:mvc="sap.ui.core.mvc" 
+    xmlns="sap.m"
+     xmlns:l="sap.ui.layout" 
+     xmlns:f="sap.ui.layout.form"
+    xmlns:t="sap.ui.table" 
+    xmlns:s="sap.m.semantic" 
+    xmlns:sf="sap.f.semantic"
+    xmlns:custom="http://schemas.sap.com/sapui5/extension/sap.ui.core.CustomData/1">
+    
+    
+            
+    <s:DetailPage title="{/tituloDocumento}" id="pagDocNuevo_datos_detail2" class="cabecera_semanticDetail">
+        <s:customHeaderContent>
+            <Button icon="sap-icon://cart" type="Transparent" press="onDocNuevoMasterProductos" class="btnSemanticEstilo"></Button>
+            <Button  type="Transparent" enabled="false" class="btnSemanticEstilo"></Button>
+            <Button icon="sap-icon://save"  tooltip="Guardar" press="onBtnGuardarDocumento" visible="{/pedido/enabledBtnGuardar}"/>
+                </s:customHeaderContent>       
+        <sf:SemanticPage
+        headerPinnable="false"
+        toggleHeaderOnTitleClick="false"
+        preserveHeaderStateOnScroll="false"
+        showFooter="false" class="SemanticPageEstilo">
+
+            <!-- Title Heading-->
+        <sf:titleHeading>
+            <Title text="{/clienteEventual/nombreCliente}" />
+        </sf:titleHeading>
+
+        <!-- Header Content -->
+        <sf:headerContent>
+                    <FlexBox
+                        alignItems="Start"
+                        justifyContent="Start">
+                        <items>
+                                <FlexBox
+                                                height="38px"
+                                            alignItems="End">
+                                                <items>
+                                <ObjectAttribute title="Código" text=" {/clienteEventual/codigoCliente}"/>
+                            </items>
+                        </FlexBox>
+                        </items>
+                    </FlexBox>
+                    <!--FlexBox
+                        alignItems="Start"
+                        justifyContent="End" width="95%">
+                        <items>
+                                <Button icon="sap-icon://cart" type="Transparent" press="onDocNuevoMasterProductos" class="btnSemanticEstilo"></Button>
+
+                        </items>
+                    </FlexBox-->
+            <IconTabBar id="tabInterlocutores" expandable="false" headerMode="Inline" upperCase="false" expanded="{device&gt;/isNoPhone}" class="sapUiResponsiveContentPadding" select="CambioTabFilter">
+                <items>
+                    <IconTabFilter showAll="false" text="Solicitante" key="filterSolicitante" icon="sap-icon://person-placeholder" design="Vertical">
+                        <!--OverflowToolbar design="Transparent" height="3rem">
+                            <ToolbarSpacer/>
+                            <Button text="Buscar" icon="sap-icon://search"/>
+                            <Button text="Copiar" icon="sap-icon://action"/>
+                        </OverflowToolbar--> 
+
+
+                        <Input width="100%"  value="{/interlocutores/AG/Funcion}" id="txt_funcion_solicitante" editable="false" visible="false"></Input>
+                        <Input width="100%" placeholder="Ingrese Código" value="{/interlocutores/AG/Cliente/Codigo}"  id="txt_codigo_solicitante" editable="false" visible="false"></Input>
+                        <f:Form editable="true">
+                           <!-- <f:title>
+                                <core:Title text="Address" />
+                            </f:title> -->
+                            <f:layout>
+                                <f:ResponsiveGridLayout
+                                    labelSpanXL="12"
+                                    labelSpanL="12"
+                                    labelSpanM="12"
+                                    labelSpanS="12"
+                                    adjustLabelSpan="false"
+                                    emptySpanXL="2"
+                                    emptySpanL="2"
+                                    emptySpanM="2"
+                                    emptySpanS="2"
+                                    columnsXL="2"
+                                    columnsL="2"
+                                    columnsM="2"
+                                    singleContainerFullSize="false" />
+                            </f:layout>
+                            <f:formContainers>
+                                
+                                        <f:FormContainer>
+                                    <f:formElements> 
+                                            <f:FormElement label="DNI/RUC">
+                                            <f:fields>
+                                                <Input width="100%" type="Number" pattern="[0-9]*" placeholder="Ingrese DNI/RUC" value="{/interlocutores/AG/Cliente/Ruc}" id="txt_dni_ruc_solicitante"  enabled="{/pedido/validInterlocutores}" change="onInputAgDni" required="true">
+                                                    <layoutData>
+                                                        <l:GridData span="L8 M8 S8"/>
+                                                    </layoutData>
+                                                </Input>
+                                                <Link
+                                                text="Sunat"
+                                                target="_blank"
+                                                href="http://e-consultaruc.sunat.gob.pe/cl-ti-itmrconsruc/jcrS00Alias" />
+                                            </f:fields>
+                                        </f:FormElement>                         
+                                    </f:formElements>
+                                </f:FormContainer>
+                                <f:FormContainer>
+                                    <f:formElements>                                        
+                                        <f:FormElement label="Nombre">
+                                            <f:fields>
+                                                <Input width="100%" placeholder="Ingrese Nombre" id="txt_nombre_solicitante" value="{/interlocutores/AG/Cliente/Descripcion}" enabled="{/pedido/validInterlocutores}" showSearchButton="false" change="onInputAgNombre" required="true">
+                                                    <layoutData>
+                                                        <l:GridData span="L12 M12 S12"/>
+                                                    </layoutData>
+                                                </Input>
+                                            </f:fields>
+                                        </f:FormElement>   
+                                    </f:formElements>
+                                    </f:FormContainer>                                               
+                            </f:formContainers>
+                        </f:Form>
+                        
+                        <f:Form editable="true">
+                           <!-- <f:title>
+                                <core:Title text="Address" />
+                            </f:title> -->
+                            <f:layout>
+                                <f:ResponsiveGridLayout
+                                    labelSpanXL="12"
+                                    labelSpanL="12"
+                                    labelSpanM="12"
+                                    labelSpanS="12"
+                                    adjustLabelSpan="false"
+                                    emptySpanXL="2"
+                                    emptySpanL="2"
+                                    emptySpanM="2"
+                                    emptySpanS="2"
+                                    columnsXL="1"
+                                    columnsL="1"
+                                    columnsM="1"
+                                    singleContainerFullSize="false" />
+                            </f:layout>
+                            <f:formContainers>
+                                <f:FormContainer>
+                                    <f:formElements>
+                                        <f:FormElement label="*Dirección">
+                                            <f:fields>
+                                                <SearchField width="100%" placeholder="Ingrese Dirección" id="txt_direccion_solicitante" value="{/interlocutores/AG/Cliente/Direccion}" enabled="{/pedido/validInterlocutores}" showSearchButton="false" required="true">
+                                                    <layoutData>
+                                                        <l:GridData span="L12 M12 S12"/>
+                                                    </layoutData>
+                                                </SearchField>
+                                                
+                                                
+                                            </f:fields>
+                                        </f:FormElement>                                                                            
+                                    </f:formElements>
+                                </f:FormContainer>                                                                
+                            </f:formContainers>
+                        </f:Form>
+
+                        <f:Form editable="true">
+                           <!-- <f:title>
+                                <core:Title text="Address" />
+                            </f:title> -->
+                            <f:layout>
+                                <f:ResponsiveGridLayout
+                                    labelSpanXL="12"
+                                    labelSpanL="12"
+                                    labelSpanM="12"
+                                    labelSpanS="12"
+                                    adjustLabelSpan="false"
+                                    emptySpanXL="0"
+                                    emptySpanL="0"
+                                    emptySpanM="0"
+                                    emptySpanS="0"
+                                    columnsXL="3"
+                                    columnsL="3"
+                                    columnsM="3"
+                                    singleContainerFullSize="false" />
+                            </f:layout>
+                            <f:formContainers>
+                                <f:FormContainer>
+                                    <f:formElements>
+                                        <f:FormElement label="*Teléfono fijo - Celular">
+                                            <f:fields>
+                                                <SearchField width="100%" type="Number" pattern="[0-9]*" placeholder="Ingrese Teléfono" id="txt_telefono_solicitante" value="{/interlocutores/AG/Cliente/Telefono}" enabled="{/pedido/validInterlocutores}" showSearchButton="false" required="true"></SearchField>
+                                            </f:fields>
+                                        </f:FormElement>
+                                        
+                                        
+                                    </f:formElements>
+                                </f:FormContainer>
+                                <f:FormContainer>
+                                    <f:formElements>
+                                        <f:FormElement label="*Correo">
+                                            <f:fields>
+                                                <SearchField width="100%" placeholder="Ingrese Correo" id="txt_correo_solicitante" value="{/interlocutores/AG/Cliente/Mail}"  enabled="{/pedido/enabled}" showSearchButton="false" change="onInputAgCorreo" required="true"></SearchField>
+                                            </f:fields>
+                                        </f:FormElement>                
+
+                                        </f:formElements>
+                                </f:FormContainer>  
+                                        <f:FormContainer>
+                                    <f:formElements>
+                                        <f:FormElement label="Distrito">
+                                            <f:fields>
+                                        <ComboBox placeholder="Seleccione Distrito" items="{ path : 'modellstZipCodes>/' }" maxwidth="100%" required="true" id="com_distrito_solicitante" enabled="{/pedido/enabled}" selectedKey="{/interlocutores/AG/Cliente/CodigoPostal}">
+                                                    <core:Item key="{modellstZipCodes>Codigo}" text="{modellstZipCodes>Descripcion}"/>
+                                                </ComboBox>                                                      
+                                            </f:fields>
+                                        </f:FormElement>                                          
+                                    </f:formElements>
+                                </f:FormContainer>                                
+                            </f:formContainers>
+                        </f:Form>
+
+
+                    </IconTabFilter>
+                    <IconTabFilter showAll="false" text="Dest. Mercancía" key="filterDestinoMercancia"  icon="sap-icon://journey-arrive" design="Vertical">
+
+                        <Input width="100%"  value="{/interlocutores/WE/Funcion}" id="txt_funcion_destinoMercancia"  editable="false" visible="false"></Input>
+                        <Input width="100%" placeholder="Ingrese Código" value="{/interlocutores/WE/Cliente/Codigo}" id="txt_codigo_destinoMercancia" editable="false" visible="false"></Input>
+
+                        <f:Form editable="true">
+                           <!-- <f:title>
+                                <core:Title text="Address" />
+                            </f:title> -->
+                            <f:layout>
+                                <f:ResponsiveGridLayout
+                                    labelSpanXL="12"
+                                    labelSpanL="12"
+                                    labelSpanM="12"
+                                    labelSpanS="12"
+                                    adjustLabelSpan="false"
+                                    emptySpanXL="0"
+                                    emptySpanL="0"
+                                    emptySpanM="0"
+                                    emptySpanS="0"
+                                    columnsXL="2"
+                                    columnsL="2"
+                                    columnsM="2"
+                                    singleContainerFullSize="false" />
+                            </f:layout>
+                            <f:formContainers>
+                                
+                                <f:FormContainer>
+                                    <f:formElements>
+                                        
+                                        <f:FormElement label="Nombre">
+                                            <f:fields>
+                                                <SearchField width="100%" placeholder="Ingrese Nombre" id="txt_nombre_destinoMercancia" value="{/interlocutores/WE/Cliente/Descripcion}" enabled="{/pedido/validInterlocutores}" showSearchButton="false"></SearchField>
+                                            </f:fields>
+                                        </f:FormElement>
+                                                                                
+                                    </f:formElements>
+                                </f:FormContainer>                                
+                            </f:formContainers>
+                        </f:Form>
+
+                        <f:Form editable="true">
+                           <!-- <f:title>
+                                <core:Title text="Address" />
+                            </f:title> -->
+                            <f:layout>
+                                <f:ResponsiveGridLayout
+                                    labelSpanXL="12"
+                                    labelSpanL="12"
+                                    labelSpanM="12"
+                                    labelSpanS="12"
+                                    adjustLabelSpan="false"
+                                    emptySpanXL="2"
+                                    emptySpanL="2"
+                                    emptySpanM="2"
+                                    emptySpanS="2"
+                                    columnsXL="1"
+                                    columnsL="1"
+                                    columnsM="1"
+                                    singleContainerFullSize="false" />
+                            </f:layout>
+                            <f:formContainers>
+                                <f:FormContainer>
+                                    <f:formElements>
+                                        <f:FormElement label="*Dirección">
+                                            <f:fields>
+                                                <SearchField width="100%" placeholder="Ingrese Dirección" value="{/interlocutores/WE/Cliente/Direccion}" id="txt_direccion_destinoMercancia" enabled="{/pedido/enabled}" showSearchButton="false"><layoutData>
+                                        <l:GridData span="L12 M12 S12"/>
+                                    </layoutData></SearchField>
+                                               
+                                            </f:fields>
+                                        </f:FormElement>                                                                            
+                                    </f:formElements>
+                                </f:FormContainer>                                                            
+                            </f:formContainers>
+                        </f:Form>
+
+                        <f:Form editable="true">
+                           <!-- <f:title>
+                                <core:Title text="Address" />
+                            </f:title> -->
+                            <f:layout>
+                                <f:ResponsiveGridLayout
+                                    labelSpanXL="12"
+                                    labelSpanL="12"
+                                    labelSpanM="12"
+                                    labelSpanS="12"
+                                    adjustLabelSpan="false"
+                                    emptySpanXL="0"
+                                    emptySpanL="0"
+                                    emptySpanM="0"
+                                    emptySpanS="0"
+                                    columnsXL="3"
+                                    columnsL="3"
+                                    columnsM="3"
+                                    singleContainerFullSize="false" />
+                            </f:layout>
+                            <f:formContainers>
+                                <f:FormContainer>
+                                    <f:formElements>
+                                        <f:FormElement label="Teléfono fijo-celular">
+                                            <f:fields>
+                                                <SearchField width="100%" type="Number" pattern="[0-9]*" placeholder="Ingrese Teléfono" value="{/interlocutores/WE/Cliente/Telefono}" id="txt_telefono_destinoMercancia" enabled="{/pedido/enabled}" showSearchButton="false"></SearchField>
+                                            </f:fields>
+                                        </f:FormElement>                                                                                
+                                    </f:formElements>
+                                </f:FormContainer>
+                                <f:FormContainer>
+                                    <f:formElements>
+                                        <f:FormElement label="*Teléfono Móvil">
+                                            <f:fields>
+                                                <SearchField width="100%" type="Number" pattern="[0-9]*" placeholder="Ingrese Teléfono Móvil" value="{/interlocutores/WE/Cliente/TelefonoMovil}" id="txt_celular_destinoMercancia" enabled="{/pedido/enabled}" showSearchButton="false"></SearchField>
+                                            </f:fields>
+                                        </f:FormElement>            
+                                    </f:formElements>
+                                </f:FormContainer>  
+
+                                <f:FormContainer>
+                                    <f:formElements>
+                                        <f:FormElement label="Distrito">
+                                            <f:fields>
+                                <ComboBox placeholder="Seleccione Distrito" items="{ path : 'modellstZipCodes>/' }" maxwidth="100%" required="true" id="com_distrito_destinoMercancia" selectedKey="{/interlocutores/WE/Cliente/CodigoPostal}"  enabled="{/pedido/enabled}">
+                                    <core:Item key="{modellstZipCodes>Codigo}" text="{modellstZipCodes>Descripcion}"/>
+                                </ComboBox> 
+                                </f:fields>
+                                        </f:FormElement>            
+                                    </f:formElements>
+                                </f:FormContainer>                              
+                            </f:formContainers>
+                        </f:Form>    
+                    </IconTabFilter>
+                    <IconTabFilter showAll="false" text="Dest. Factura" key="filterDestinoFactura"  icon="sap-icon://monitor-payments" design="Vertical">
+                        <Input width="100%"  value="{/interlocutores/RE/Funcion}" id="txt_funcion_destinoFactura" editable="false" visible="false"></Input>
+                         <Input width="100%" placeholder="Ingrese Código" value="{/interlocutores/RE/Cliente/Codigo}" id="txt_codigo_destinoFactura" editable="false" visible="false"></Input>
+                        
+
+
+
+                        <f:Form editable="true">
+                           <!-- <f:title>
+                                <core:Title text="Address" />
+                            </f:title> -->
+                            <f:layout>
+                                <f:ResponsiveGridLayout
+                                    labelSpanXL="12"
+                                    labelSpanL="12"
+                                    labelSpanM="12"
+                                    labelSpanS="12"
+                                    adjustLabelSpan="false"
+                                    emptySpanXL="0"
+                                    emptySpanL="0"
+                                    emptySpanM="0"
+                                    emptySpanS="0"
+                                    columnsXL="2"
+                                    columnsL="2"
+                                    columnsM="2"
+                                    singleContainerFullSize="false" />
+                            </f:layout>
+                            <f:formContainers>
+                                
+                                <f:FormContainer>
+                                    <f:formElements>
+                                        
+                                        <f:FormElement label="Nombre">
+                                            <f:fields>
+                                                <SearchField width="100%" placeholder="Ingrese Nombre" id="txt_nombre_destinoFactura" value="{/interlocutores/RE/Cliente/Descripcion}" enabled="{/pedido/validInterlocutores}" showSearchButton="false"></SearchField>
+                                            </f:fields>
+                                        </f:FormElement>
+                                                                                
+                                    </f:formElements>
+                                </f:FormContainer>                                
+                            </f:formContainers>
+                        </f:Form>
+
+                        <f:Form editable="true">
+                           <!-- <f:title>
+                                <core:Title text="Address" />
+                            </f:title> -->
+                            <f:layout>
+                                <f:ResponsiveGridLayout
+                                    labelSpanXL="12"
+                                    labelSpanL="12"
+                                    labelSpanM="12"
+                                    labelSpanS="12"
+                                    adjustLabelSpan="false"
+                                    emptySpanXL="2"
+                                    emptySpanL="2"
+                                    emptySpanM="2"
+                                    emptySpanS="2"
+                                    columnsXL="1"
+                                    columnsL="1"
+                                    columnsM="1"
+                                    singleContainerFullSize="false" />
+                            </f:layout>
+                            <f:formContainers>
+                                <f:FormContainer>
+                                    <f:formElements>
+                                        <f:FormElement label="Dirección">
+                                            <f:fields>
+                                                <SearchField width="100%" placeholder="Ingrese Dirección" value="{/interlocutores/RE/Cliente/Direccion}" id="txt_direccion_destinoFactura" enabled="{/pedido/enabled}" showSearchButton="false"><layoutData>
+                                        <l:GridData span="L12 M12 S12"/>
+                                    </layoutData></SearchField>
+                                                
+                                            </f:fields>
+                                        </f:FormElement>                                                                            
+                                    </f:formElements>
+                                </f:FormContainer>                                                            
+                            </f:formContainers>
+                        </f:Form>
+
+                        <f:Form editable="true">
+                           <!-- <f:title>
+                                <core:Title text="Address" />
+                            </f:title> -->
+                            <f:layout>
+                                <f:ResponsiveGridLayout
+                                    labelSpanXL="12"
+                                    labelSpanL="12"
+                                    labelSpanM="12"
+                                    labelSpanS="12"
+                                    adjustLabelSpan="false"
+                                    emptySpanXL="0"
+                                    emptySpanL="0"
+                                    emptySpanM="0"
+                                    emptySpanS="0"
+                                    columnsXL="3"
+                                    columnsL="3"
+                                    columnsM="3"
+                                    singleContainerFullSize="false" />
+                            </f:layout>
+                            <f:formContainers>
+                                <f:FormContainer>
+                                    <f:formElements>
+                                        <f:FormElement label="Teléfono">
+                                            <f:fields>
+                                                <SearchField width="100%" placeholder="Ingrese Teléfono" id="txt_telefono_destinoFactura" value="{/interlocutores/RE/Cliente/Telefono}" enabled="{/pedido/enabled}" showSearchButton="false"></SearchField>
+                                            </f:fields>
+                                        </f:FormElement>                                                                            
+                                    </f:formElements>
+                                </f:FormContainer>
+
+                                <f:FormContainer>
+                                    <f:formElements>
+                                        <f:FormElement label="Distrito">
+                                            <f:fields>
+                                <ComboBox placeholder="Seleccione Distrito" items="{ path : 'modellstZipCodes>/' }" maxwidth="100%" required="true" id="com_distrito_destinoFactura" selectedKey="{/interlocutores/RE/Cliente/CodigoPostal}" enabled="{/pedido/enabled}">
+                                    <core:Item key="{modellstZipCodes>Codigo}" text="{modellstZipCodes>Descripcion}"/>
+                                </ComboBox>
+                                 </f:fields>
+                                        </f:FormElement>                                                                            
+                                    </f:formElements>
+                                </f:FormContainer>                                 
+                            </f:formContainers>
+                        </f:Form>                
+                    </IconTabFilter>
+                    <IconTabFilter showAll="false" text="Resp. Pago" key="filterResponsablePago"  icon="sap-icon://customer-financial-fact-sheet" design="Vertical">
+                        <Input width="100%" value="{/interlocutores/RG/Funcion}" id="txt_funcion_responsablePago" editable="false" visible="false"></Input>
+                        <Input width="100%" placeholder="Ingrese Código" value="{/interlocutores/RG/Cliente/Codigo}" id="txt_codigo_responsablePago" editable="false" visible="false"></Input>
+                        
+
+
+                        <f:Form editable="true">
+                           <!-- <f:title>
+                                <core:Title text="Address" />
+                            </f:title> -->
+                            <f:layout>
+                                <f:ResponsiveGridLayout
+                                    labelSpanXL="12"
+                                    labelSpanL="12"
+                                    labelSpanM="12"
+                                    labelSpanS="12"
+                                    adjustLabelSpan="false"
+                                    emptySpanXL="0"
+                                    emptySpanL="0"
+                                    emptySpanM="0"
+                                    emptySpanS="0"
+                                    columnsXL="2"
+                                    columnsL="2"
+                                    columnsM="2"
+                                    singleContainerFullSize="false" />
+                            </f:layout>
+                            <f:formContainers>
+                                <f:FormContainer>
+                                    <f:formElements>
+                                        <f:FormElement label="DNI/RUC">
+                                            <f:fields>
+                                                <SearchField width="100%" placeholder="Ingrese DNI/RUC" id="txt_dni_ruc_responsablePago" value="{/interlocutores/RG/Cliente/Ruc}" enabled="{/pedido/enabled}" showSearchButton="false"></SearchField>
+                                            </f:fields>
+                                        </f:FormElement>
+                                        
+                                        
+                                        
+                                    </f:formElements>
+                                </f:FormContainer>
+                                <f:FormContainer>
+                                    <f:formElements>
+                                        
+                                        <f:FormElement label="Nombre">
+                                            <f:fields>
+                                                <SearchField width="100%" placeholder="Ingrese Nombre" id="txt_nombre_responsablePago" value="{/interlocutores/RG/Cliente/Descripcion}" enabled="{/pedido/enabled}" showSearchButton="false"></SearchField>
+                                            </f:fields>
+                                        </f:FormElement>                                                                            
+                                    </f:formElements>
+                                </f:FormContainer>   
+
+                                
+                                                             
+                            </f:formContainers>
+                        </f:Form>
+                        <f:Form editable="true">
+                           <!-- <f:title>
+                                <core:Title text="Address" />
+                            </f:title> -->
+                            <f:layout>
+                                <f:ResponsiveGridLayout
+                                    labelSpanXL="12"
+                                    labelSpanL="12"
+                                    labelSpanM="12"
+                                    labelSpanS="12"
+                                    adjustLabelSpan="false"
+                                    emptySpanXL="2"
+                                    emptySpanL="2"
+                                    emptySpanM="2"
+                                    emptySpanS="2"
+                                    columnsXL="1"
+                                    columnsL="1"
+                                    columnsM="1"
+                                    singleContainerFullSize="false" />
+                            </f:layout>
+                            <f:formContainers>
+                                                                                        
+                            </f:formContainers>
+                        </f:Form>
+
+                        <f:Form editable="true">
+                           <!-- <f:title>
+                                <core:Title text="Address" />
+                            </f:title> -->
+                            <f:layout>
+                                <f:ResponsiveGridLayout
+                                    labelSpanXL="12"
+                                    labelSpanL="12"
+                                    labelSpanM="12"
+                                    labelSpanS="12"
+                                    adjustLabelSpan="false"
+                                    emptySpanXL="2"
+                                    emptySpanL="2"
+                                    emptySpanM="2"
+                                    emptySpanS="2"
+                                    columnsXL="1"
+                                    columnsL="1"
+                                    columnsM="1"
+                                    singleContainerFullSize="false" />
+                            </f:layout>
+                            <f:formContainers>
+                                <f:FormContainer>
+                                    <f:formElements>
+                                        <f:FormElement label="Dirección">
+                                            <f:fields>
+                                                <SearchField width="100%" placeholder="Ingrese Dirección" id="txt_direccion_responsablePago" value="{/interlocutores/RG/Cliente/Direccion}" enabled="{/pedido/enabled}" showSearchButton="false"><layoutData>
+                                        <l:GridData span="L12 M12 S12"/>
+                                    </layoutData></SearchField>
+                                                
+                                            </f:fields>
+                                        </f:FormElement>                                                                            
+                                    </f:formElements>
+                                </f:FormContainer>                                                        
+                            </f:formContainers>
+                        </f:Form>
+
+                        <f:Form editable="true">
+                           <!-- <f:title>
+                                <core:Title text="Address" />
+                            </f:title> -->
+                            <f:layout>
+                                <f:ResponsiveGridLayout
+                                    labelSpanXL="12"
+                                    labelSpanL="12"
+                                    labelSpanM="12"
+                                    labelSpanS="12"
+                                    adjustLabelSpan="false"
+                                    emptySpanXL="0"
+                                    emptySpanL="0"
+                                    emptySpanM="0"
+                                    emptySpanS="0"
+                                    columnsXL="3"
+                                    columnsL="3"
+                                    columnsM="3"
+                                    singleContainerFullSize="false" />
+                            </f:layout>
+                            <f:formContainers>
+                                <f:FormContainer>
+                                    <f:formElements>
+                                        <f:FormElement label="Teléfono">
+                                            <f:fields>
+                                                <SearchField width="100%" placeholder="Ingrese Teléfono" id="txt_telefono_responsablePago" value="{/interlocutores/RG/Cliente/Telefono}" enabled="{/pedido/enabled}" showSearchButton="false"></SearchField>
+                                            </f:fields>
+                                        </f:FormElement>
+                                                                                
+                                    </f:formElements>
+                                </f:FormContainer>   
+
+                                <f:FormContainer>
+                                    <f:formElements>
+                                        <f:FormElement label="Distrito">
+                                            <f:fields>
+                                <ComboBox placeholder="Seleccione Distrito" items="{ path : 'modellstZipCodes>/' }" maxwidth="100%" required="true" id="com_distrito_responsablePago" selectedKey="{/interlocutores/RG/Cliente/CodigoPostal}" enabled="{/pedido/enabled}">
+                                    <core:Item key="{modellstZipCodes>Codigo}" text="{modellstZipCodes>Descripcion}"/>
+                                    <layoutData>
+                                        <l:GridData span="L12 M12 S12"/>
+                                    </layoutData>
+                                </ComboBox>    
+                                </f:fields>
+                                        </f:FormElement>
+                                                                                
+                                    </f:formElements>
+                                </f:FormContainer>                          
+                            </f:formContainers>
+                        </f:Form>                    
+                    </IconTabFilter>
+                    <IconTabFilter showAll="false" text="Ag. Transporte" key="filterAgenciaTransporte"  icon="sap-icon://bus-public-transport" design="Vertical">
+
+                        <f:Form editable="true">
+                           <!-- <f:title>
+                                <core:Title text="Address" />
+                            </f:title> -->
+                            <f:layout>
+                                <f:ResponsiveGridLayout
+                                    labelSpanXL="12"
+                                    labelSpanL="12"
+                                    labelSpanM="12"
+                                    labelSpanS="12"
+                                    adjustLabelSpan="false"
+                                    emptySpanXL="0"
+                                    emptySpanL="0"
+                                    emptySpanM="0"
+                                    emptySpanS="0"
+                                    columnsXL="3"
+                                    columnsL="3"
+                                    columnsM="3"
+                                    singleContainerFullSize="false" />
+                            </f:layout>
+                            <f:formContainers>
+                                <f:FormContainer>
+                                    <f:formElements>
+                                        <f:FormElement label="Código">
+                                            <f:fields>
+                                                <SearchField width="100%" placeholder="Ingrese Código" value="{/interlocutores/Z3/Cliente/Codigo}" id="txt_codigo_agenciaTransporte" enabled="{/pedido/enabled}" showSearchButton="true" search="onBtnBuscarAgTransporteCodigo"></SearchField>
+                                            </f:fields>
+                                        </f:FormElement>
+                                    </f:formElements>
+                                </f:FormContainer>
+                                <f:FormContainer>
+                                    <f:formElements>
+                                        <f:FormElement label="RUC" visible="{/OcultarCampos}">
+                                            <f:fields>
+                                                <SearchField width="100%" placeholder="Ingrese DNI/RUC" value="{/interlocutores/Z3/Cliente/Ruc}" id="txt_dni_ruc_agenciaTransporte" enabled="{/pedido/enabled}" showSearchButton="false" >
+                                                    <layoutData>
+                                                        <l:GridData span="L12 M12 S12"/>
+                                                    </layoutData>
+                                                </SearchField>
+                                            </f:fields>
+                                        </f:FormElement>
+                                    </f:formElements>
+                                </f:FormContainer>
+                                <f:FormContainer>
+                                    <f:formElements>
+                                        <f:FormElement>
+                                            <f:fields>
+                                                <FlexBox
+                                                alignItems="Start"
+                                                justifyContent="Start">
+                                                <items>
+                                                        <FlexBox
+                                                                        height="65px"
+                                                                    alignItems="End">
+                                                                        <items>
+                                                        <Link
+                                                                        text="Sunat"
+                                                                        target="_blank"
+                                                                        href="http://e-consultaruc.sunat.gob.pe/cl-ti-itmrconsruc/jcrS00Alias" />
+                                                    </items>
+                                                </FlexBox>
+                                                </items>
+                                            </FlexBox>
+                                                
+                                            </f:fields>
+                                        </f:FormElement>
+                                        
+                                        
+                                        
+                                    </f:formElements>
+                                </f:FormContainer>
+                                                               
+                            </f:formContainers>
+                        </f:Form>
+                        <f:Form editable="true">
+                           <!-- <f:title>
+                                <core:Title text="Address" />
+                            </f:title> -->
+                            <f:layout>
+                                <f:ResponsiveGridLayout
+                                    labelSpanXL="12"
+                                    labelSpanL="12"
+                                    labelSpanM="12"
+                                    labelSpanS="12"
+                                    adjustLabelSpan="false"
+                                    emptySpanXL="0"
+                                    emptySpanL="0"
+                                    emptySpanM="0"
+                                    emptySpanS="0"
+                                    columnsXL="1"
+                                    columnsL="1"
+                                    columnsM="1"
+                                    singleContainerFullSize="false" />
+                            </f:layout>
+                            <f:formContainers>
+                                                <f:FormContainer>
+                                    <f:formElements>
+                                        
+                                        <f:FormElement label="Nombre">
+                                            <f:fields>
+                                                <SearchField width="100%" placeholder="Ingrese Nombre" value="{/interlocutores/Z3/Cliente/Descripcion}" id="txt_nombre_agenciaTransporte" enabled="{/pedido/enabled}" showSearchButton="true" search="onBtnBuscarAgTransporteDescripcion">
+                                                    <layoutData>
+                                        <l:GridData span="L6 M6 S6"/>
+                                    </layoutData>
+                                                </SearchField>
+                                            </f:fields>
+                                        </f:FormElement>                                                                            
+                                    </f:formElements>
+                                </f:FormContainer>                
+                            </f:formContainers>
+                        </f:Form>
+
+                        <f:Form editable="true">
+                           <!-- <f:title>
+                                <core:Title text="Address" />
+                            </f:title> -->
+                            <f:layout>
+                                <f:ResponsiveGridLayout
+                                    labelSpanXL="12"
+                                    labelSpanL="12"
+                                    labelSpanM="12"
+                                    labelSpanS="12"
+                                    adjustLabelSpan="false"
+                                    emptySpanXL="2"
+                                    emptySpanL="2"
+                                    emptySpanM="2"
+                                    emptySpanS="2"
+                                    columnsXL="1"
+                                    columnsL="1"
+                                    columnsM="1"
+                                    singleContainerFullSize="false" />
+                            </f:layout>
+                            <f:formContainers>
+                                <f:FormContainer>
+                                    <f:formElements>
+                                        <f:FormElement label="Dirección" required="true">
+                                            <f:fields>
+                                                <SearchField width="100%" placeholder="Ingrese Dirección" value="{/interlocutores/Z3/Cliente/Direccion}" id="txt_direccion_agenciaTransporte" enabled="{/pedido/enabled}" showSearchButton="false"><layoutData>
+                                        <l:GridData span="L8 M8 S6"/>
+                                    </layoutData></SearchField>
+                                                <ComboBox placeholder="Seleccione Distrito" items="{ path : 'modellstZipCodes>/' }" maxwidth="100%"  selectedKey="{/interlocutores/Z3/Cliente/CodigoPostal}" id="com_distrito_agenciaTransporte" enabled="{/pedido/enabled}">
+                                    <core:Item key="{modellstZipCodes>Codigo}" text="{modellstZipCodes>Descripcion}"/>
+                                    <!--core:Item key="{modellstZipCodes>Codigo}" text="{modellstZipCodes>Codigo} {modellstZipCodesDescripcion}"/-->
+                                    <layoutData>
+                                        <l:GridData span="L4 M4 S6"/>
+                                    </layoutData>
+                                </ComboBox>
+                                            </f:fields>
+                                        </f:FormElement>                                                                            
+                                    </f:formElements>
+                                </f:FormContainer>                                                            
+                            </f:formContainers>
+                        </f:Form>
+
+                        <f:Form editable="true">
+                           <!-- <f:title>
+                                <core:Title text="Address" />
+                            </f:title> -->
+                            <f:layout>
+                                <f:ResponsiveGridLayout
+                                    labelSpanXL="12"
+                                    labelSpanL="12"
+                                    labelSpanM="12"
+                                    labelSpanS="12"
+                                    adjustLabelSpan="false"
+                                    emptySpanXL="0"
+                                    emptySpanL="0"
+                                    emptySpanM="0"
+                                    emptySpanS="0"
+                                    columnsXL="3"
+                                    columnsL="3"
+                                    columnsM="3"
+                                    singleContainerFullSize="false" />
+                            </f:layout>
+                            <f:formContainers>
+                                <f:FormContainer>
+                                    <f:formElements>
+                                        <f:FormElement label="Teléfono">
+                                            <f:fields>
+                                                <SearchField width="100%" placeholder="Ingrese Teléfono" value="{/interlocutores/Z3/Cliente/Telefono}" id="txt_telefono_agenciaTransporte" enabled="{/pedido/enabled}" showSearchButton="false"></SearchField>
+                                            </f:fields>
+                                        </f:FormElement>                                                                            
+                                    </f:formElements>
+                                </f:FormContainer>                                
+                            </f:formContainers>
+                        </f:Form>
+                    
+                    </IconTabFilter >
+                    <IconTabFilter showAll="false" text="Enc. Comercial" key="filterEncargadoComercial"  icon="sap-icon://employee-approvals" design="Vertical">
+
+                        <FlexBox
+                    alignItems="Center"
+                    justifyContent="Center">
+                        <f:Form editable="true">
+                           <!-- <f:title>
+                                <core:Title text="Address" />
+                            </f:title> -->
+                            <f:layout>
+                                <f:ResponsiveGridLayout
+                                    labelSpanXL="12"
+                                    labelSpanL="12"
+                                    labelSpanM="12"
+                                    labelSpanS="12"
+                                    adjustLabelSpan="false"
+                                    emptySpanXL="4"
+                                    emptySpanL="4"
+                                    emptySpanM="4"
+                                    emptySpanS="0"
+                                    columnsXL="1"
+                                    columnsL="1"
+                                    columnsM="1"
+                                    singleContainerFullSize="false" />
+                            </f:layout>
+                            <f:formContainers>
+                                <f:FormContainer>
+                                    <f:formElements>
+                                        <f:FormElement label="Vendedor 1"> 
+                                            <f:fields>
+                                                <!--ComboBox items="{ path : '/dataIni/lstAsesores' }" maxwidth="100%" required="false" selectedKey="{/interlocutores/VE/Persona/CodPersona}" id="com_vendedor1_encargadoComercial" enabled="{/pedido/enabled}">
+                                                    <core:Item key="{Codigo}" text="{Descripcion}"/>
+                                                    <layoutData>
+                                                         <l:GridData span="L12 M12 S12"/>
+                                                    </layoutData>
+                                                </ComboBox-->
+                                                <ComboBox items="{ path : 'modellstAsesores>/' }" maxwidth="100%" required="false" selectedKey="{/interlocutores/VE/Persona/CodPersona}" id="com_vendedor1_encargadoComercial" enabled="{/pedido/enabled}">
+                                                    <core:Item key="{modellstAsesores>Codigo}" text="{modellstAsesores>Descripcion}"/>
+                                                    <layoutData>
+                                                         <l:GridData span="L12 M12 S12"/>
+                                                    </layoutData>
+                                                </ComboBox>
+                                            </f:fields>
+                                        </f:FormElement>
+                                        <f:FormElement label="Vendedor 2">
+                                            <f:fields>
+                                                 <ComboBox items="{ path : 'modellstAsesores>/' }" maxwidth="100%" required="false" selectedKey="{/interlocutores/V2/Persona/CodPersona}" id="com_vendedor2_encargadoComercial" enabled="{/pedido/enabled}">
+                                                    <core:Item key="{modellstAsesores>Codigo}" text="{modellstAsesores>Descripcion}"/>
+                                                    <layoutData>
+                                                         <l:GridData span="L12 M12 S12"/>
+                                                    </layoutData>
+                                                </ComboBox>
+                                            </f:fields>
+                                        </f:FormElement>
+                                        <f:FormElement label="Vendedor 3">
+                                            <f:fields>
+                                                 <ComboBox items="{ path : 'modellstAsesores>/' }" maxwidth="100%" required="false" selectedKey="{/interlocutores/V3/Persona/CodPersona}" id="com_vendedor3_encargadoComercial" enabled="{/pedido/enabled}">
+                                                    <core:Item key="{modellstAsesores>Codigo}" text="{modellstAsesores>Descripcion}"/>
+                                                    <layoutData>
+                                                         <l:GridData span="L12 M12 S12"/>
+                                                    </layoutData>
+                                                </ComboBox>
+                                            </f:fields>
+                                        </f:FormElement>                                                                            
+                                    </f:formElements>
+                                </f:FormContainer>
+                            </f:formContainers>
+                        </f:Form>
+
+                        </FlexBox>
+                    </IconTabFilter>
+                    <IconTabFilter showAll="false" text="Profesional" key="filterProfesional"  icon="sap-icon://leads" design="Vertical">
+
+                        <f:Form editable="true">
+                           
+                            <f:layout>
+                                <f:ResponsiveGridLayout
+                                    labelSpanXL="12"
+                                    labelSpanL="12"
+                                    labelSpanM="12"
+                                    labelSpanS="12"
+                                    adjustLabelSpan="false"
+                                    emptySpanXL="2"
+                                    emptySpanL="2"
+                                    emptySpanM="1"
+                                    emptySpanS="0"
+                                    columnsXL="2"
+                                    columnsL="2"
+                                    columnsM="2"
+                                    singleContainerFullSize="false" />
+                            </f:layout>
+                            <f:formContainers>
+                                <f:FormContainer>
+                                    <f:title>
+                                <core:Title text="Profesional 1" />
+                            </f:title> 
+                                    <f:formElements>
+                                        <f:FormElement label="Código" id="txt_codigo_Profesional">
+                                            <f:fields>
+                                                <Input  placeholder="Ingrese Código" value="{/interlocutores/Z2/Persona/CodPersona}" showSearchButton="false" editable="false">
+                                                    <layoutData>
+                                                        <l:GridData span="L8 M8 S8"/>
+                                                    </layoutData>
+                                                </Input>
+                                                <Button icon="sap-icon://delete" press="onEliminarProfesional1" enabled="{/valueProfesional}" type="Transparent"></Button>
+                                            </f:fields>
+                                        </f:FormElement>
+                                        <f:FormElement label="Nombre">
+                                            <f:fields>
+                                                <Input
+                                                    
+                                                    placeholder="Ingrese Nombre"
+                                                    enableSuggestions="true"
+                                                    value="{/interlocutores/Z2/Persona/Descripcion}"
+                                                    search="onCopiarDatosInterlocutores" editable="false">
+                                                    <layoutData>
+                                                        <l:GridData span="L8 M8 S8"/>
+                                                    </layoutData>
+                                                </Input>
+                                                <Button icon="sap-icon://search" enabled="{/valueProfesional}" press="onBtnProfesional1" type="Transparent"></Button>
+                                                <!--Input width="100%" placeholder="Ingrese Nombre" value="{/interlocutores/Z2/Persona/Descripcion}" id="txt_nombre1_Profesional" enabled="{/pedido/enabled}"></Input-->
+                                            </f:fields>
+                                        </f:FormElement>                                                                                                                  
+                                    </f:formElements>
+                                </f:FormContainer>
+                                <f:FormContainer>
+                                    <f:title>
+                                <core:Title text="Profesional 2" />
+                            </f:title> 
+                                    <f:formElements>
+                                        <f:FormElement label="Código">
+                                            <f:fields>
+                                                <Input placeholder="Ingrese Código" value="{/interlocutores/Z5/Persona/CodPersona}" id="txt_codigo2_Profesional" editable="false" showSearchButton="false" >
+                                                    <layoutData>
+                                                        <l:GridData span="L8 M8 S8"/>
+                                                    </layoutData>
+                                                </Input>
+                                                <Button icon="sap-icon://delete" press="onEliminarProfesional2" enabled="{/valueProfesional}" type="Transparent"></Button>
+                                            </f:fields>
+                                        </f:FormElement>
+                                        <f:FormElement label="Nombre">
+                                            <f:fields>
+                                                <Input
+                                                    id="txt_nombre2_Profesional"
+                                                    width="100%"
+                                                    placeholder="Ingrese Nombre"
+                                                    value="{/interlocutores/Z5/Persona/Descripcion}"
+                                                    editable="false"
+                                                    search="onBuscarInterlocutores"
+                                                    showSearchButton="true">
+                                                    <layoutData>
+                                                        <l:GridData span="L8 M8 S8"/>
+                                                    </layoutData>
+                                                </Input>
+                                                <Button icon="sap-icon://search" enabled="{/valueProfesional}" press="onBtnProfesional2" type="Transparent"></Button>
+                                                <!--Input width="100%" placeholder="Ingrese Nombre" value="{/interlocutores/Z5/Persona/Descripcion}" id="txt_nombre2_Profesional" enabled="{/pedido/enabled}"></Input-->
+                                            </f:fields>
+                                        </f:FormElement>
+                                                                                                                      
+                                    </f:formElements>
+                                </f:FormContainer>
+                            </f:formContainers>
+                        </f:Form>
+                    </IconTabFilter>
+                    <IconTabFilter showAll="false" text="Datos Adic." key="filterDatosAdicionales"  icon="sap-icon://notes" design="Vertical">
+                        <Panel>
+                        <ScrollContainer
+                    resize="auto"
+                    width="auto"
+                    vertical="true"
+                    horizontal="false"
+                    focusable="true">
+
+                        <f:Form editable="true">
+                            <f:layout>
+                                <f:ResponsiveGridLayout
+                                    labelSpanXL="12"
+                                    labelSpanL="12"
+                                    labelSpanM="12"
+                                    labelSpanS="12"
+                                    adjustLabelSpan="false"
+                                    emptySpanXL="4"
+                                    emptySpanL="4"
+                                    emptySpanM="4"
+                                    emptySpanS="0"
+                                    columnsXL="2"
+                                    columnsL="2"
+                                    columnsM="2"
+                                    singleContainerFullSize="false" />
+                            </f:layout>
+                            <f:formContainers>
+                                <f:FormContainer>
+                                    <f:formElements>
+
+                                        <f:FormElement label="DNI" >
+                                            <f:fields>
+                                                <Input  placeholder="Ingrese DNI" id="txt_dni_datosAdicionales" value="{/cliente/Ruc}" enabled="{/pedido/enabled}" editable="false" required="true">
+                                                    <layoutData>
+                                                        <l:GridData span="L12 M12 S12"/>
+                                                    </layoutData>
+                                                </Input>
+                                            </f:fields>
+                                        </f:FormElement>
+                                        <f:FormElement label="Apellido Paterno">
+                                            <f:fields>
+                                                <Input  placeholder="Ingrese Apellido Paterno" id="txt_apellido_paterno_datosAdicionales" value="{/cliente/APPAT}" enabled="{/pedido/enabled}" required="true">
+                                                    <layoutData>
+                                                        <l:GridData span="L12 M12 S12"/>
+                                                    </layoutData>
+                                                </Input>
+                                            </f:fields>
+                                        </f:FormElement>
+                                        <f:FormElement label="Apellido Materno">
+                                            <f:fields>
+                                                <Input  placeholder="Ingrese Apelido Materno" id="txt_apellido_materno_datosAdicionales" value="{/cliente/APMAT}" enabled="{/pedido/enabled}" required="true">
+                                                    <layoutData>
+                                                        <l:GridData span="L12 M12 S12"/>
+                                                    </layoutData>
+                                                </Input>
+                                            </f:fields>
+                                        </f:FormElement> 
+                                        <f:FormElement label="Nombre">
+                                            <f:fields>
+                                                <Input  placeholder="Ingrese Nombre" id="txt_nombre_datosAdicionales" value="{/cliente/NOMBRE}" enabled="{/pedido/enabled}" required="true">
+                                                    <layoutData>
+                                                        <l:GridData span="L12 M12 S12"/>
+                                                    </layoutData>
+                                                </Input>
+                                            </f:fields>
+                                        </f:FormElement> 
+                                        <f:FormElement label="Fecha de Nacimiento">
+                                            <f:fields>
+                                                <DatePicker  valueFormat="dd/MM/YYYY" displayFormat="dd/MM/YYYY"
+                                    value="{/cliente/FECNAC}" id="dt_fecha_nacimiento_datosAdicionales" enabled="{/pedido/enabled}" change="onChangeFecNac" required="true">
+                                    <layoutData>
+                                                        <l:GridData span="L12 M12 S12"/>
+                                                    </layoutData>
+                                    
+                                </DatePicker>
+                                            </f:fields>
+                                        </f:FormElement>
+                                        <f:FormElement label="*Grado de Instrucción">
+                                            <f:fields>
+                                                <Select items="{ path : '/dataIni/lstGradoInst' }" maxwidth="100%" required="true" selectedKey="{/cliente/GRAINS}" id="com_grado_instruccion_datosAdicionales" enabled="{/pedido/enabled}" >
+                                    <core:Item key="{Codigo}" text="{Descripcion}"/>
+                                    <layoutData>
+                                                        <l:GridData span="L12 M12 S12"/>
+                                                    </layoutData>
+                                </Select>
+                                            </f:fields>
+                                        </f:FormElement>
+                                        <f:FormElement label="*Sexo" label1="*Sexo">
+                                            <f:fields>
+                                                 <Select maxwidth="100%" required="true" id="com_sexo_datosAdicionales" selectedKey="{/cliente/SEXO}" enabled="{/pedido/enabled}" description="njnjnj">
+                                    <core:Item key="0" text="Seleccione"/>
+                                    <core:Item key="1" text="Masculino"/>
+                                    <core:Item key="2" text="Femenino"/>
+                                    <layoutData>
+                                                        <l:GridData span="L12 M12 S12"/>
+                                                    </layoutData>
+                                </Select>
+                                            </f:fields>
+                                        </f:FormElement>
+                                        <f:FormElement label="Distrito">
+                                            <f:fields>
+                                                <ComboBox placeholder="Seleccione Distrito" items="{ path : 'modellstZipCodes>/' }" maxwidth="100%" required="true" selectedKey="{/cliente/CodigoPostal}" id="com_distrito_datosAdicionales" enabled="{/pedido/enabled}">
+                                    <core:Item key="{modellstZipCodes>Codigo}" text="{modellstZipCodes>Descripcion}"/>
+                                    <layoutData>
+                                        <l:GridData span="L12 M12 S12"/>
+                                    </layoutData>
+                                </ComboBox>
+                                            </f:fields>
+                                        </f:FormElement>                                     
+                                        
+                                    </f:formElements>
+                                </f:FormContainer>
+
+                                 <f:FormContainer>
+                                    <f:formElements>
+
+                                                    <f:FormElement label="Edad">
+                                            <f:fields>
+                                                <Input  placeholder="Ingrese Edad" id="txt_edad_datosAdicionales" value="{/cliente/EDAD}" enabled="{/pedido/enabled}" editable="false">
+                                                    <layoutData>
+                                                        <l:GridData span="L12 M12 S12"/>
+                                                    </layoutData>
+                                                </Input>
+                                            </f:fields>
+                                        </f:FormElement>
+                                        <f:FormElement label="Rango Edad">
+                                            <f:fields>
+                                                <Select  maxwidth="100%" required="true" selectedKey="{/cliente/RANGOED}" id="com_rango_edad_datosAdicionales" enabled="{/pedido/enabled}" >
+                                    <core:Item key="0" text="Joven"/>
+                                    <core:Item key="1" text="Medio"/>
+                                    <core:Item key="2" text="Mayor"/>
+                                    <layoutData>
+                                                        <l:GridData span="L12 M12 S12"/>
+                                                    </layoutData>
+                                </Select>
+                                            </f:fields>
+                                        </f:FormElement>
+                                        <f:FormElement label="Tipo de Cliente">
+                                            <f:fields>
+                                                <ComboBox items="{ path : '/listaRespuestas' }" maxwidth="100%" required="true" id="com_tipo_cliente_datosAdicionales" selectedKey="{/preguntas/1/CODR}" enabled="{/pedido/enabled}" placeholder="Seleccione Tipo de Cliente">
+                                                    <core:Item key="{Codigo}" text="{Descripcion}"/>
+                                                    <layoutData>
+                                                        <l:GridData span="L12 M12 S12"/>
+                                                    </layoutData>
+                                                </ComboBox>
+
+                                            </f:fields>
+                                        </f:FormElement> 
+                                        <f:FormElement label="Tipo de Construcción">
+                                            <f:fields>
+                                                 <ComboBox items="{ path : '/listaRespuestas1' }" maxwidth="100%" required="true" id="com_tipo_construccion_datosAdicionales" selectedKey="{/preguntas/10/CODR}" enabled="{/pedido/enabled}" placeholder="Seleccione Tipo de Construcción">
+                                                    <core:Item key="{Codigo}" text="{Descripcion}"/>
+                                                    <layoutData>
+                                                        <l:GridData span="L12 M12 S12"/>
+                                                    </layoutData>
+                                                </ComboBox>
+                                            </f:fields>
+                                        </f:FormElement> 
+
+                                        <f:FormElement label="Tipo de Proyecto-Residencial">
+                                            <f:fields>
+                                                <Select items="{ path : '/listaRespuestas2' }" maxwidth="100%" required="true" id="com_proyecto_residencial_datosAdicionales" selectedKey="{/preguntas/15/CODR}" enabled="{/pedido/enabled}" change="onCmbTipoProyResi">
+                                                    <core:Item key="{Codigo}" text="{= ${Codigo} === ''? 'Seleccione Tipo de Proyecto-Residencial' : ${Descripcion} }"/>
+                                                    <layoutData>
+                                                        <l:GridData span="L12 M12 S12"/>
+                                                    </layoutData>
+                                                </Select>
+                                            </f:fields>
+                                        </f:FormElement>
+                                        <f:FormElement label="Tipo de Proyecto-Institucional">
+                                            <f:fields>
+                                                <Select items="{ path : '/listaRespuestas3' }" maxwidth="100%" required="true" id="com_proyecto_institucional_datosAdicionales" selectedKey="{/preguntas/20/CODR}" enabled="{/pedido/enabled}" change="onCmbTipoProyInsti">
+                                                    <core:Item key="{Codigo}" text="{= ${Codigo} === ''? 'Seleccione Tipo de Proyecto-Institucional' : ${Descripcion} }"/>
+                                                    <layoutData>
+                                                        <l:GridData span="L12 M12 S12"/>
+                                                    </layoutData>
+                                                </Select>
+                                            </f:fields>
+                                        </f:FormElement>
+                                        <f:FormElement label="Presupuesto para el Proyecto" visible="{/OcultarCampos}">
+                                            <f:fields>
+                                                  <Select items="{ path : '/listaRespuestas4' }" maxwidth="100%" required="true" id="com_presupuesto_proyecto_datosAdicionales" selectedKey="{/preguntas/25/CODR}" enabled="{/pedido/enabled}">
+                                                    <core:Item key="{Codigo}" text="{= ${Codigo} === ''? 'Seleccione Presupuesto para el Proyecto' : ${Descripcion} }"/>
+                                                    <layoutData>
+                                                        <l:GridData span="L12 M12 S12"/>
+                                                    </layoutData>
+                                                </Select>
+                                            </f:fields>
+                                        </f:FormElement>
+                                        <f:FormElement label="Estilo 1">
+                                            <f:fields>
+                                                 <ComboBox items="{ path : '/listaRespuestas6' }" maxwidth="100%" required="true" id="com_estilo1_datosAdicionales" selectedKey="{/preguntas/35/CODR}" enabled="{/pedido/enabled}" placeholder="Seleccione Estilo 1">
+                                                    <core:Item key="{Codigo}" text="{Descripcion}"/>
+                                                    <layoutData>
+                                                        <l:GridData span="L12 M12 S12"/>
+                                                    </layoutData>
+                                                </ComboBox>
+                                            </f:fields>
+                                        </f:FormElement>                                                                  
+                                    </f:formElements>
+                                </f:FormContainer>                            
+                            </f:formContainers>
+                        </f:Form>
+
+                    </ScrollContainer>
+                </Panel>
+                    </IconTabFilter>
+                </items>
+            </IconTabBar>
+        
+
+        </sf:headerContent>
+
+        <!-- Content -->
+        <!--sf:content>
+            
+
+
+
+        </sf:content-->
+
+        <!--sf:titleMainAction>
+            <sf:TitleMainAction text="Edit"/>
+        </sf:titleMainAction-->
+
+        
+
+        <!-- Custom Title Icon Content-->
+        <!--sf:titleCustomIconActions >
+            <OverflowToolbarButton icon="sap-icon://cart" text="cart" />
+        </sf:titleCustomIconActions-->
+
+</sf:SemanticPage>
+        <!--s:pagingAction>
+            <Button icon="sap-icon://save"  tooltip="Guardar" press="onBtnGuardarDocumento" visible="{/pedido/enabledBtnGuardar}"/>
+        </s:pagingAction-->
+         <s:customFooterContent>
+                    <Button id="btnCopiarDatosInterlocutores" icon="sap-icon://action" text="" press="onCopiarDatosInterlocutores" visible="{/pedido/enabledBtnCopiar}"></Button>
+                    <Button id="btnBuscarInterlocutor"  icon="sap-icon://search" text="" press="onBuscarInterlocutores" visible="{/pedido/enabledBtnBuscar}"></Button>
+        </s:customFooterContent>
+    </s:DetailPage>
+</core:FragmentDefinition>

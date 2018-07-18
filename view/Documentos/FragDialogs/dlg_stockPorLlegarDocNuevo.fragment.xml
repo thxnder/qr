@@ -1,0 +1,86 @@
+<core:FragmentDefinition 
+    xmlns:core="sap.ui.core" 
+    xmlns:mvc="sap.ui.core.mvc" 
+    xmlns="sap.m"
+     xmlns:l="sap.ui.layout" 
+     xmlns:f="sap.ui.layout.form"
+    xmlns:t="sap.ui.table" 
+    xmlns:s="sap.m.semantic" 
+    xmlns:custom="http://schemas.sap.com/sapui5/extension/sap.ui.core.CustomData/1">
+    	
+
+
+<Dialog title="Tránsito" id="dlg_stockPorLlegarDocNuevo" class="cabecera_dialogo" stretchOnPhone="true" contentWidth="35%"
+                    contentHeight="32%">
+        <content>
+
+            <f:Form editable="true">
+                           <!-- <f:title>
+                                <core:Title text="Address" />
+                            </f:title> -->
+                            <f:layout>
+                                <f:ResponsiveGridLayout
+                                    labelSpanXL="3"
+                                    labelSpanL="3"
+                                    labelSpanM="3"
+                                    labelSpanS="4"
+                                    adjustLabelSpan="false"
+                                    emptySpanXL="4"
+                                    emptySpanL="4"
+                                    emptySpanM="4"
+                                    emptySpanS="0"
+                                    columnsXL="1"
+                                    columnsL="1"
+                                    columnsM="1"
+                                    singleContainerFullSize="false" />
+                            </f:layout>
+                            <f:formContainers>
+                                <f:FormContainer>
+                                    <f:formElements>
+                                        <f:FormElement label="Código de Material">
+                                            <f:fields>
+                                                <Input placeholder="Ingrese Código de Material"  id="txt_cod_material_stockPorLlegarDocNuevo" value="{/codMaterial}" editable="false"></Input>
+                                            </f:fields>
+                                        </f:FormElement>
+                                        <f:FormElement label="Fecha de Inicio">
+                                            <f:fields>
+                                                <DatePicker valueFormat="dd/MM/YYYY" displayFormat="dd/MM/YYYY" 
+                                        value="{parts: [{path: 'date>/'}, {path: 'formatdate>/short'}, {path: 'formatdate>/equal'}], formatter: '.formatter.date'}" id="date_fec_inicio_stockPorLlegarDocNuevo">
+                                            <layoutData>
+                                                <l:GridData span="L4 M4 S6"/>
+                                            </layoutData>
+                                    </DatePicker>
+                                            </f:fields>
+                                        </f:FormElement>
+                                        <f:FormElement label="Fecha de Fin">
+                                            <f:fields>
+                                                <DatePicker valueFormat="dd/MM/YYYY" displayFormat="dd/MM/YYYY" 
+                                        value="{parts: [{path: 'date>/'}, {path: 'formatdate>/short'}, {path: 'formatdate>/equal'}], formatter: '.formatter.date'}" id="date_fec_fin_stockPorLlegarDocNuevo">
+                                            <layoutData>
+                                                <l:GridData span="L4 M4 S6"/>
+                                            </layoutData>
+                                    </DatePicker>
+                                            </f:fields>
+                                        </f:FormElement>
+                                        
+                                    </f:formElements>
+                                </f:FormContainer>
+                            </f:formContainers>
+                        </f:Form>
+            
+        </content>
+
+       
+
+
+        <beginButton>
+            <Button text="Continuar" class="btn_aceptar" type="Accept" icon="sap-icon://accept" press="onContinuarStockPorLlegar" value="{/codMaterial}" />
+        </beginButton>
+        <endButton>
+            <Button text="Cancel" class="btn_cancelar" type="Reject" icon="sap-icon://sys-cancel" press="onCancelarStockPorLlegar" />
+        </endButton>
+    </Dialog>
+
+
+    	
+    </core:FragmentDefinition>

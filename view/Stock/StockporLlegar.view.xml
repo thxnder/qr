@@ -1,0 +1,32 @@
+
+<mvc:View
+	height="100%"
+	xmlns:core="sap.ui.core"
+	xmlns:mvc="sap.ui.core.mvc"
+	xmlns="sap.m"
+	controllerName="pe.com.seidor.sap.decor.ventas.controller.Stock.StockporLlegar"
+	xmlns:l="sap.ui.layout" 
+    xmlns:f="sap.ui.layout.form"
+    xmlns:t="sap.ui.table" 
+    xmlns:s="sap.m.semantic"
+
+    xmlns:custom="http://schemas.sap.com/sapui5/extension/sap.ui.core.CustomData/1"
+		displayBlock="true">
+
+
+
+<s:FullscreenPage title="Tránsito" class="cabecera_dialogo">
+    <BusyDialog id="loadingControl" />
+    <!--dlg_stockPorLlegar-->
+            <core:Fragment fragmentName="pe.com.seidor.sap.decor.ventas.view.Stock.FragDialogs.dlg_stockPorLlegar" type="XML"></core:Fragment>
+            
+                    <!--Detail Stock por LLegar-->
+            <core:Fragment fragmentName="pe.com.seidor.sap.decor.ventas.view.Documentos.Frag.Detail.DocStockporLlegarDetalleFragment" type="XML"></core:Fragment>
+ 
+            </s:FullscreenPage>
+
+            
+
+          
+ 
+</mvc:View>

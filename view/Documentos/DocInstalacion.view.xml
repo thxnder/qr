@@ -1,0 +1,91 @@
+
+<mvc:View
+	height="100%"
+	xmlns:core="sap.ui.core"
+	xmlns:mvc="sap.ui.core.mvc"
+	xmlns="sap.m"
+	controllerName="pe.com.seidor.sap.decor.ventas.controller.Documentos.DocInstalacion"
+	xmlns:l="sap.ui.layout" 
+    xmlns:f="sap.ui.layout.form"
+    xmlns:t="sap.ui.table" 
+    xmlns:s="sap.m.semantic"
+
+    xmlns:custom="http://schemas.sap.com/sapui5/extension/sap.ui.core.CustomData/1"
+		displayBlock="true">
+
+
+        
+   
+
+ <SplitContainer id="SplitAppId" initialMaster="DocMasterInstalacion" initialDetail="pagDocNuevo_datos_detail1" orientationChange="onOrientationChange">
+        <masterPages>
+            <!--MasterDocInstalacion-->
+            <core:Fragment fragmentName="pe.com.seidor.sap.decor.ventas.view.Documentos.Frag.Master.DocMasterInstalacion" type="XML"></core:Fragment>
+
+            <!--Master Buscar Cliente-->
+            <core:Fragment fragmentName="pe.com.seidor.sap.decor.ventas.view.Documentos.Frag.Master.DocMasterDatosBuscarClienteFragment" type="XML"></core:Fragment>
+
+            <!--Master Producto-->
+            <core:Fragment fragmentName="pe.com.seidor.sap.decor.ventas.view.Documentos.Frag.Master.DocMasterProductosFragment" type="XML"></core:Fragment>
+
+            <!--Master Producto Buscar-->
+            <core:Fragment fragmentName="pe.com.seidor.sap.decor.ventas.view.Documentos.Frag.Master.DocMasterProductoBuscarFragment" type="XML"></core:Fragment>
+
+
+            <!--Master Productos Agregar-->
+            <core:Fragment fragmentName="pe.com.seidor.sap.decor.ventas.view.Documentos.Frag.Master.DocMasterProductoAgregarFragment" type="XML"></core:Fragment>
+
+            
+        </masterPages>
+        <detailPages>
+
+<!--Dialogs-->
+
+        <!--dlg_DialogDocInstalacion-->
+    <core:Fragment fragmentName="pe.com.seidor.sap.decor.ventas.view.Documentos.FragDialogs.dlg_DialogDocInstalacionInicio" type="XML"></core:Fragment>          
+
+    <Dialog title="Aviso" id="dlg_MensajeAvisoInstalacion" stretchOnPhone="true" contentWidth="2%" contentHeight="9%">
+        <content>
+            <Text text="{/resultIntala}"></Text>
+        </content>
+        <beginButton>
+            <Button text="OK" type="Accept" press="onOkMensajeInstalacion"></Button>
+        </beginButton>
+    </Dialog>
+
+    <!--dlg_DialogDocModificar-->
+            <core:Fragment fragmentName="pe.com.seidor.sap.decor.ventas.view.Documentos.FragDialogs.dlg_DialogDocModificarInicio" type="XML"></core:Fragment>
+            
+                <!--Detail Cliente-->
+            <core:Fragment fragmentName="pe.com.seidor.sap.decor.ventas.view.Documentos.Frag.Detail.DocClienteFragment" type="XML"></core:Fragment>
+
+            <!--Detalle Cliente Buscado-->
+            <core:Fragment fragmentName="pe.com.seidor.sap.decor.ventas.view.Documentos.Frag.Detail.DocDatosClienteBuscadoFragment" type="XML"></core:Fragment>
+
+            <!--Detail Interlocutores-->
+            <core:Fragment fragmentName="pe.com.seidor.sap.decor.ventas.view.Documentos.Frag.Detail.DocInterlocutoresFragment" type="XML"></core:Fragment>
+
+            <!--Detail Observaciones-->
+            <core:Fragment fragmentName="pe.com.seidor.sap.decor.ventas.view.Documentos.Frag.Detail.DocObservacionesFragment" type="XML"></core:Fragment>
+
+            <!--DocInstalacion_datosInstalacion-->
+            <core:Fragment fragmentName="pe.com.seidor.sap.decor.ventas.view.Documentos.Frag.Detail.DocInstalacion_datosInstalacion" type="XML"></core:Fragment>
+
+            <!--DocInstalacion_pedidosAsociados-->
+            <core:Fragment fragmentName="pe.com.seidor.sap.decor.ventas.view.Documentos.Frag.Detail.DocInstalacion_pedidosAsociados" type="XML"></core:Fragment>
+
+            <!--Detail Producto Detalle-->
+            <core:Fragment fragmentName="pe.com.seidor.sap.decor.ventas.view.Documentos.Frag.Detail.DocProductoDetalleFragment" type="XML"></core:Fragment>
+
+            <!--Detail Producto Agregado-->
+            <core:Fragment fragmentName="pe.com.seidor.sap.decor.ventas.view.Documentos.Frag.Detail.DocProductoAgregadoFragment" type="XML"></core:Fragment>
+
+            <!--Detail Producto Buscado-->
+            <core:Fragment fragmentName="pe.com.seidor.sap.decor.ventas.view.Documentos.Frag.Detail.DocProductoBuscadoFragment" type="XML"></core:Fragment>
+            
+            
+        </detailPages>
+    </SplitContainer>
+
+	
+</mvc:View>

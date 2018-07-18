@@ -1,0 +1,115 @@
+<core:FragmentDefinition 
+    xmlns:core="sap.ui.core" 
+    xmlns:mvc="sap.ui.core.mvc" 
+    xmlns="sap.m"
+     xmlns:l="sap.ui.layout" 
+     xmlns:f="sap.ui.layout.form"
+    xmlns:t="sap.ui.table" 
+    xmlns:s="sap.m.semantic" 
+    xmlns:custom="http://schemas.sap.com/sapui5/extension/sap.ui.core.CustomData/1">
+    	
+
+
+<Dialog title="Pedidos Comprometidos" id="dlg_pedComprometidos" class="cabecera_dialogo" stretchOnPhone="true" contentWidth="auto"
+                    contentHeight="auto">
+        <content>
+
+            <f:Form editable="true">
+                           <!-- <f:title>
+                                <core:Title text="Address" />
+                            </f:title> -->
+                            <f:layout>
+                                <f:ResponsiveGridLayout
+                                    labelSpanXL="5"
+                                    labelSpanL="5"
+                                    labelSpanM="5"
+                                    labelSpanS="5"
+                                    adjustLabelSpan="false"
+                                    emptySpanXL="4"
+                                    emptySpanL="4"
+                                    emptySpanM="4"
+                                    emptySpanS="0"
+                                    columnsXL="1"
+                                    columnsL="1"
+                                    columnsM="1"
+                                    singleContainerFullSize="false" />
+                            </f:layout>
+                            <f:formContainers>
+                                <f:FormContainer>
+                                    <f:formElements>
+                                        <f:FormElement label="Clase de Pedido">
+                                            <f:fields>
+                                                <Select items="" required="true" id="com_clasePedido_pedComprometidos" selectedKey="{/clasePedido}" enabled="{/validCmbOpcionAmbiente}">
+                                                    <core:Item key="" text="Seleccione Clase Pedido"/>
+                                                    <core:Item key="Z004" text="Z004 :: Venta Calzada"/>
+                                                    <core:Item key="Z034" text="Z034 :: Venta Tránsito"/>
+                                                </Select>
+                                            </f:fields>
+                                        </f:FormElement>
+                                        <f:FormElement label="Número Pedido">
+                                            <f:fields>
+                                                <SearchField placeholder="Ingrese Número Pedido"  id="txt_numPedido_pedComprometidos" value="{/numPedido}" showSearchButton="false"></SearchField>
+                                            </f:fields>
+                                        </f:FormElement>
+                                        <f:FormElement label="Fecha de Inicio">
+                                            <f:fields>
+                                                <DatePicker valueFormat="dd/MM/YYYY" displayFormat="dd/MM/YYYY" 
+                                        value="{parts: [{path: 'date>/'}, {path: 'formatdate>/short'}, {path: 'formatdate>/equal'}], formatter: '.formatter.date'}" id="date_fec_inicio_pedComprometidos">
+                                            <layoutData>
+                                                <l:GridData span="L4 M4 S6"/>
+                                            </layoutData>
+                                    </DatePicker>
+                                            </f:fields>
+                                        </f:FormElement>
+                                        <f:FormElement label="Fecha de Fin">
+                                            <f:fields>
+                                                <DatePicker valueFormat="dd/MM/YYYY" displayFormat="dd/MM/YYYY" 
+                                        value="{parts: [{path: 'date>/'}, {path: 'formatdate>/short'}, {path: 'formatdate>/equal'}], formatter: '.formatter.date'}" id="date_fec_fin_pedComprometidos">
+                                            <layoutData>
+                                                <l:GridData span="L4 M4 S6"/>
+                                            </layoutData>
+                                    </DatePicker>
+                                            </f:fields>
+                                        </f:FormElement>
+                                        <f:FormElement label="Solicitante">
+                                            <f:fields>
+                                                <SearchField placeholder="Ingrese Solicitante"  id="txt_solicitante_pedComprometidos" value="{/solicitante}" showSearchButton="false"></SearchField>
+                                            </f:fields>
+                                        </f:FormElement>
+                                        
+                                        <f:FormElement label="Canal">
+                                            <f:fields>
+                                                <SearchField placeholder="Ingrese Canal"  id="txt_canal_pedComprometidos" value="{/canal}" showSearchButton="false"></SearchField>
+                                            </f:fields>
+                                        </f:FormElement>
+                                        <f:FormElement label="Oficina de Venta">
+                                            <f:fields>
+                                                <SearchField placeholder="Ingrese Oficina de Venta"  id="txt_ofiVenta_pedComprometidos" value="{/ofiVenta}" showSearchButton="false"></SearchField>
+                                            </f:fields>
+                                        </f:FormElement>
+                                        <f:FormElement label="Asesor">
+                                            <f:fields>
+                                                <SearchField placeholder="Ingrese Asesor"  id="txt_asesor_pedComprometidos" value="{/asesor}" showSearchButton="false"></SearchField>
+                                            </f:fields>
+                                        </f:FormElement>
+                                    </f:formElements>
+                                </f:FormContainer>
+                            </f:formContainers>
+                        </f:Form>
+            
+        </content>
+
+       
+
+
+        <beginButton>
+            <Button text="Continuar" class="btn_aceptar" type="Accept" icon="sap-icon://accept" press="onContinuarPedComprometidos" value="{/codMaterial}" />
+        </beginButton>
+        <endButton>
+            <Button text="Cancel" class="btn_cancelar" type="Reject" icon="sap-icon://sys-cancel" press="onCancelarPedComprometidos" />
+        </endButton>
+    </Dialog>
+
+
+    	
+    </core:FragmentDefinition>

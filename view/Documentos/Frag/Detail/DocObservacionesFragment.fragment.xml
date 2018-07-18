@@ -1,0 +1,129 @@
+<core:FragmentDefinition 
+    xmlns:core="sap.ui.core" 
+    xmlns:mvc="sap.ui.core.mvc" 
+    xmlns="sap.m"
+     xmlns:l="sap.ui.layout" 
+     xmlns:f="sap.ui.layout.form"
+    xmlns:t="sap.ui.table" 
+    xmlns:s="sap.m.semantic" 
+    xmlns:sf="sap.f.semantic"
+    xmlns:custom="http://schemas.sap.com/sapui5/extension/sap.ui.core.CustomData/1">
+
+    
+    <s:DetailPage title="{/tituloDocumento}" id="pagDocNuevo_datos_detail3" class="cabecera_semanticDetail">
+        <s:customHeaderContent>
+            <Button icon="sap-icon://cart" type="Transparent" press="onDocNuevoMasterProductos" class="btnSemanticEstilo"></Button>
+            <Button  type="Transparent" enabled="false" class="btnSemanticEstilo"></Button>
+            <Button icon="sap-icon://save"  tooltip="Guardar" press="onBtnGuardarDocumento" visible="{/pedido/enabledBtnGuardar}"/>
+                </s:customHeaderContent>       
+        <sf:SemanticPage
+        headerPinnable="false"
+        toggleHeaderOnTitleClick="false"
+        preserveHeaderStateOnScroll="false"
+        showFooter="false" class="SemanticPageEstilo">
+
+            <!-- Title Heading-->
+        <sf:titleHeading>
+            <Title text="{/clienteEventual/nombreCliente}" />
+        </sf:titleHeading>
+
+        <!-- Header Content -->
+        <sf:headerContent>
+                    <!--FlexBox
+                        alignItems="Start"
+                        justifyContent="Start">
+                        <items>
+                                <FlexBox
+                                                height="38px"
+                                            alignItems="End">
+                                                <items>
+                                <ObjectAttribute title="Código" text=" {/clienteEventual/codigoCliente}"/>
+                            </items>
+                        </FlexBox>
+                        </items>
+                    </FlexBox-->
+                    <!--FlexBox
+                        alignItems="Start"
+                        justifyContent="End" width="95%">
+                        <items>
+                                <Button icon="sap-icon://cart" type="Transparent" press="onDocNuevoMasterProductos" class="btnSemanticEstilo"></Button>
+
+                        </items>
+                    </FlexBox-->
+
+        </sf:headerContent>
+        <sf:content> 
+                    <f:Form editable="true">
+                           <!--<f:title>
+                                <core:Title text="Profesional 2" />
+                            </f:title> -->
+                            <f:layout>
+                                <f:ResponsiveGridLayout
+                                    labelSpanXL="3"
+                                    labelSpanL="3"
+                                    labelSpanM="3"
+                                    labelSpanS="5"
+                                    adjustLabelSpan="false"
+                                    emptySpanXL="4"
+                                    emptySpanL="4"
+                                    emptySpanM="4"
+                                    emptySpanS="0"
+                                    columnsXL="1"
+                                    columnsL="1"
+                                    columnsM="1"
+                                    singleContainerFullSize="false" />
+                            </f:layout>
+                            <f:formContainers>
+                                <f:FormContainer>
+                                    <f:formElements>
+                                        <f:FormElement label="Atención" visible="{/ObsAtencion}">
+                                            <f:fields>
+                                                <TextArea value="{/observaciones/ZP01/Descripcion}" rows="8" editable="{/pedido/enabled}" />
+                                            </f:fields>
+                                        </f:FormElement>
+                                        <f:FormElement label="Ref. Dirección" visible="{/ObsRefDire}">
+                                            <f:fields>
+                                                <TextArea value="{/observaciones/ZP07/Descripcion}" rows="8" editable="{/pedido/enabled}"/>
+                                            </f:fields>
+                                        </f:FormElement>
+                                        <f:FormElement label="Obs. Administrativas" visible="{/ObsAdm}">
+                                            <f:fields>
+                                                <TextArea value="{/observaciones/ZP05/Descripcion}" rows="8" editable="{/pedido/enabled}"/>
+                                            </f:fields>
+                                        </f:FormElement>
+                                        <f:FormElement label="Ref. Factura" visible="{/ObsRefFac}">
+                                            <f:fields>
+                                                <TextArea value="{/observaciones/ZP06/Descripcion}" rows="8" editable="{/pedido/enabled}"/>
+                                            </f:fields>
+                                        </f:FormElement>
+                                    </f:formElements>
+                                </f:FormContainer>
+                            </f:formContainers>
+                        </f:Form>
+            </sf:content>
+        <!-- Content -->
+        <!--sf:content>
+            
+
+
+
+        </sf:content-->
+
+        <!--sf:titleMainAction>
+            <sf:TitleMainAction text="Edit"/>
+        </sf:titleMainAction-->
+
+        
+
+        <!-- Custom Title Icon Content-->
+        <!--sf:titleCustomIconActions >
+            <OverflowToolbarButton icon="sap-icon://cart" text="cart" />
+        </sf:titleCustomIconActions-->
+
+</sf:SemanticPage>
+        <!--s:pagingAction>
+            <Button icon="sap-icon://save"  tooltip="Guardar" press="onBtnGuardarDocumento" visible="{/pedido/enabledBtnGuardar}"/>
+        </s:pagingAction-->
+        
+    </s:DetailPage>
+</core:FragmentDefinition>

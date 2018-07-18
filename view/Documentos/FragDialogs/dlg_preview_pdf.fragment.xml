@@ -1,0 +1,121 @@
+<core:FragmentDefinition 
+    xmlns:core="sap.ui.core" 
+    xmlns:mvc="sap.ui.core.mvc" 
+    xmlns="sap.m"
+     xmlns:l="sap.ui.layout" 
+     xmlns:f="sap.ui.layout.form"
+    xmlns:t="sap.ui.table" 
+    xmlns:s="sap.m.semantic" 
+    xmlns:custom="http://schemas.sap.com/sapui5/extension/sap.ui.core.CustomData/1"
+    xmlns:tnt="sap.tnt">
+        
+
+
+
+    <!-- // GENERACION DE PDF -->
+            <Dialog id="dlg_preview_pdf" class="dlg_pdf cabecera_dialogo" showHeader="false" stretchOnPhone="true" contentWidth="100%" contentHeight="100%">
+                
+                <content>
+                    <NavContainer id="navConPDF" width="100%" height="100%">
+                        <Page id="pgGeneracion" title="Generación de PDF" class="cabecera_pdf">
+                            <content>
+                                <core:HTML id="pdfViewerHTML" content='' />
+                                <Image id="image1" src="data:application/pdf;base64,JVBERi0xLjQKJeLjz9MKMSAwIG9iago8PC9Qcm9kdWNlcihTZWxlY3QuUGRmIEh0bWwgVG8gUGRmIGZvciAuTkVUIENvbW11bml0eSBFZGl0aW9uIHYxNy4zLjA7IG1vZGlmaWVkIHVzaW5nIGlUZXh0U2hhcnCSIDUuNS4xMCCpMjAwMC0yMDE2IGlUZXh0IEdyb3VwIE5WIFwoQUdQTC12ZXJzaW9uXCkpL01vZERhdGUoRDoyMDE4MDcxODExMDQ0MS0wNScwMCcpPj4KZW5kb2JqCjIgMCBvYmoKPDwvTGVuZ3RoIDEwL0ZpbHRlci9GbGF0ZURlY29kZT4+c3RyZWFtCnicK+QCAADuAHwKZW5kc3RyZWFtCmVuZG9iagozIDAgb2JqCjw8L0xlbmd0aCAxNS9GaWx0ZXIvRmxhdGVEZWNvZGU+PnN0cmVhbQp4nFMI5CrkCuQCAAWNAVIKZW5kc3RyZWFtCmVuZG9iago0IDAgb2JqCjw8L1BhZ2VNb2RlL1VzZU5vbmUvVmlld2VyUHJlZmVyZW5jZXMgNSAwIFIvVHlwZS9DYXRhbG9nL1BhZ2VMYXlvdXQvT25lQ29sdW1uL1BhZ2VzIDYgMCBSPj4KZW5kb2JqCjUgMCBvYmoKPDwvSGlkZU1lbnViYXIgZmFsc2UvSGlkZVRvb2xiYXIgZmFsc2UvSGlkZVdpbmRvd1VJIGZhbHNlL0ZpdFdpbmRvdyBmYWxzZS9Ob25GdWxsU2NyZWVuQmVoYXZpb3IvVXNlTm9uZS9EaXNwbGF5RG9jVGl0bGUgZmFsc2UvQ2VudGVyV2luZG93IGZhbHNlPj4KZW5kb2JqCjYgMCBvYmoKPDwvVHlwZS9QYWdlcy9LaWRzWzcgMCBSXS9Db3VudCAxPj4KZW5kb2JqCjcgMCBvYmoKPDwvUmVzb3VyY2VzPDwvUHJvY1NldFsvUERGL1RleHQvSW1hZ2VDXS9YT2JqZWN0PDwvYW1ta2VlYmlqb2Zwa3BhYnBmbGNvY2Rpb2tsamFlam4gOCAwIFI+Pj4+L1BhcmVudCA2IDAgUi9UeXBlL1BhZ2UvQ29udGVudHNbMiAwIFIgOSAwIFIgMyAwIFJdL01lZGlhQm94WzAuMDAwMDAgMC4wMDAwMCA1OTUuMDAwMDAgODQyLjAwMDAwXT4+CmVuZG9iago4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…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" alt="Example Picture 1" press="onPress" />
+                            </content>
+                            <footer>
+                                <Toolbar>
+                                    <Button text="Cancel" type="Accion" icon="sap-icon://sys-cancel" press="onCerrarPrevisualizar" />
+                                    <ToolbarSpacer/>
+                                    <Button text="Confirmar" type="Accion" icon="sap-icon://accept" press="onGenerarPDFDoc" />
+                                </Toolbar>
+                            </footer>
+                        </Page>
+                        <Page id="pgPrevisualizacion" title="Previsualización PDF" class="cabecera_pdf">
+                            <customHeader>
+                                        <Toolbar>
+                                            <Bar>
+                                    
+                                                <contentLeft>
+                                                <Button text="Volver" icon="sap-icon://navigation-left-arrow" press="onVolverPgPrevisualizacion"></Button>
+                                                </contentLeft>
+                                            </Bar>
+                                        </Toolbar>
+                                
+                            </customHeader>
+                            <content>
+                                <core:HTML id="pdfViewerHTML2" content='' />
+                            </content>
+                            <footer>
+                                <Toolbar>
+                                    <Button text="Cancel" type="Accion" icon="sap-icon://sys-cancel" press="onCerrarPrevisualizar" />
+                                    <ToolbarSpacer/>
+                                    <Button text="Confirmar" type="Accion" icon="sap-icon://accept" press="onGenerarPDFDocFirmadoSend" />
+                                </Toolbar>
+                            </footer>
+                        </Page>
+                        <Page id="pgFirma" title="Firma de documento" class="cabecera_pdf">
+                            <customHeader>
+                                        <Toolbar>
+                                            <Bar>
+                                    
+                                                <contentLeft>
+                                                <Button text="Volver" icon="sap-icon://navigation-left-arrow" press="onVolverPgFirma"></Button>
+                                                </contentLeft>
+                                            </Bar>
+                                        </Toolbar>
+                                
+                            </customHeader>
+                            <content>
+                                <FlexBox height="100%" class="flex_firma" alignItems="Center" justifyContent="Center">
+                                    <items>
+                                        <core:HTML id="pdfViewerFirma" content='' />
+                                    </items>
+                                </FlexBox>
+                            </content>
+                            <footer>
+                                <Toolbar>
+                                    <Button text="Cancel" type="Accion" icon="sap-icon://sys-cancel" press="onCerrarPrevisualizar" />
+                                    <ToolbarSpacer/>
+                                    <Button text="Limpiar" type="Accion" icon="sap-icon://delete" press="fnLimpiarFirma" />
+                                    <Button text="Firmar" type="Accion" icon="sap-icon://decision" press="onGenerarPDFDocFirmado" />
+                                </Toolbar>
+                            </footer>
+                        </Page>
+                        <Page id="pgCorreo" title="Editor de correo" class="cabecera_pdf">
+                            <customHeader>
+                                        <Toolbar>
+                                            <Bar>
+                                    
+                                                <contentLeft>
+                                                <Button text="Volver" icon="sap-icon://navigation-left-arrow" press="onVolverPgCorreo"></Button>
+                                                </contentLeft>
+                                            </Bar>
+                                        </Toolbar>
+                                
+                            </customHeader>
+                            <content>
+                                    <f:SimpleForm editable="true" layout="ResponsiveGridLayout" labelSpanL="12" labelSpanM="12" emptySpanL="1" emptySpanM="0" columnsL="0" columnsM="0">
+                                        <f:content>
+                                            <Label text="Asunto"/>
+                                            <Input width="100%" id="txtAsuntoCorreo"/>
+                                            <Label text="Cuerpo"/>
+                                            <TextArea id="txtCuerpoCorreo" rows="12" width="100%" />
+                                        </f:content>
+                                    </f:SimpleForm>
+                            </content>
+                            <footer>
+                                <Toolbar>
+                                    <Button text="Cancel" type="Accion" icon="sap-icon://sys-cancel" press="onCerrarPrevisualizar" />
+                                    <ToolbarSpacer/>
+                                    <Button text="Enviar" type="Accion" icon="sap-icon://paper-plane" press="onEnviarPDF" />
+                                </Toolbar>
+                            </footer>
+                        </Page>
+                    </NavContainer>
+                </content>
+            </Dialog>
+            <!--End PDF-->
+
+
+        
+    </core:FragmentDefinition>

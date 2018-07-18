@@ -1,0 +1,107 @@
+<core:FragmentDefinition 
+    height="100%" 
+    xmlns:core="sap.ui.core" 
+    xmlns:mvc="sap.ui.core.mvc" 
+    xmlns="sap.m"
+     xmlns:l="sap.ui.layout" 
+     xmlns:f="sap.ui.layout.form"
+    xmlns:t="sap.ui.table" 
+    xmlns:s="sap.m.semantic" 
+    xmlns:vk="sap.ui.vk"
+    xmlns:tnt="sap.tnt"
+    xmlns:demo="sap.ui.core.sample.ViewTemplate.valuelist"
+    xmlns:custom="http://schemas.sap.com/sapui5/extension/sap.ui.core.CustomData/1"
+    displayBlock="true">
+    	
+    	<s:MasterPage title="Datos" id="MasterDocNuevoDatos" class="cabeceraMaster">
+            <!--s:customHeaderContent>
+                    <OverflowToolbarButton icon="sap-icon://home" text="Menu" press="goHome"/>
+                </s:customHeaderContent>
+                
+                <Page id="PageMasterDatos" hideHeader="true">
+                    <customHeader>
+                        <Toolbar>
+                            <SegmentedButton id="buttonMasterDatos" selectedKey="datos" width="100%">
+                                <items>
+                                    <SegmentedButtonItem text="Datos" key="datos" press="onDocNuevoMasterDatos"/>
+                                    <SegmentedButtonItem text="Productos" press="onDocNuevoMasterProductos"/>
+                                </items>
+                            </SegmentedButton>
+                            </Toolbar>
+                        </customHeader>
+
+                        <GroupHeaderListItem title="Transport"
+                                        upperCase="false" />
+                        < mode="MultiSelect" includeItemInSelection="true" selectionChange="onSelectionChange"
+                        >
+                        <customHeader height="0%">
+                            <Toolbar>
+                            </Toolbar>
+                        </customHeader-->
+
+                        <vk:ListPanel id="listPanelDatos" headerText="Datos" selectionMode="SingleSelectMaster"
+                                headerIcon="sap-icon://legend" expanded="true" selectionChange="selectMasterDetail" visible="{/menuMaster/listPanelDatos}">
+                                <vk:items>
+                                    <vk:LegendItem title="Datos Cliente" icon="sap-icon://person-placeholder"/>
+                                    <vk:LegendItem title="Interlocutores" icon="sap-icon://customer" />
+                                    <vk:LegendItem id="masterDatosObservaciones" title="Observaciones" icon="sap-icon://notes" />
+                                    <!--person-placeholder customer notes-->
+                                </vk:items>
+                        </vk:ListPanel>
+
+                        <vk:ListPanel id="listPanelFacturacion" headerText="Facturación" selectionMode="SingleSelectMaster" headerIcon="sap-icon://sales-quote" expanded="true" selectionChange="selectMasterDetail" visible="{/menuMaster/listPanelFacturacion}">
+                                <vk:items>
+                                    <vk:LegendItem title="Plan de Facturación" icon="sap-icon://sales-quote" />
+                                </vk:items>
+                        </vk:ListPanel>
+
+                        <vk:ListPanel id="listPanelDatosVisita" headerText="Visita" selectionMode="SingleSelectMaster" headerIcon="sap-icon://visits" expanded="true" selectionChange="selectMasterDetail" visible="{/menuMaster/listPanelDatosVisita}">
+                                <vk:items>
+                                    <vk:LegendItem title="Datos de Visita" icon="sap-icon://visits" />
+                                </vk:items>
+                        </vk:ListPanel>
+
+                        <vk:ListPanel id="listPanelDatosInstalacion" headerText="Instalación" selectionMode="SingleSelectMaster" headerIcon="sap-icon://wrench" expanded="true" selectionChange="selectMasterDetail" visible="{/menuMaster/listPanelDatosInstalacion}">
+                                <vk:items>
+                                    <vk:LegendItem title="Datos de Instalación" icon="sap-icon://wrench" />
+                                </vk:items>
+                            </vk:ListPanel>
+
+                        <vk:ListPanel id="listPanelPedidosAsociados" headerText="Pedidos Asociados" selectionMode="SingleSelectMaster" headerIcon="sap-icon://bus-public-transport" expanded="true" selectionChange="selectMasterDetail" visible="{/menuMaster/listPanelPedidosAsociados}">
+                                <vk:items>
+                                    <vk:LegendItem title="Pedidos Asociados" icon="sap-icon://bus-public-transport" />
+                                </vk:items>
+                        </vk:ListPanel>
+
+                        <vk:ListPanel id="listPanelDatosServicio" headerText="Servicio" selectionMode="SingleSelectMaster" headerIcon="sap-icon://crm-service-manager" expanded="true" selectionChange="selectMasterDetail" visible="{/menuMaster/listPanelDatosServicio}">
+                                <vk:items>
+                                    <vk:LegendItem title="Datos del Servicio" icon="sap-icon://crm-service-manager" />
+                                </vk:items>
+                        </vk:ListPanel>
+
+                    <!--content>
+                        <List mode="SingleSelectMaster"  items="{/tipoCabeceraModel}" itemPress="onListaMasterDatos">
+                            <items>
+                                <ObjectListItem title="{descripcion}" type="Active" >
+                                </ObjectListItem>
+                            </items>
+                        </List>
+                        
+                        
+                    </content>
+
+                    
+                </Page-->
+                <s:customFooterContent>
+                    <Button id="buscarClientePrincipal" icon="sap-icon://search" tooltip="buscar" text="Buscar Cliente" press="onDocNuevoBuscarCliente" ></Button>
+                </s:customFooterContent>
+
+                            
+
+
+                
+                
+            </s:MasterPage>
+
+
+    </core:FragmentDefinition>

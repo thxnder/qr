@@ -1,0 +1,29 @@
+<core:FragmentDefinition 
+    xmlns:core="sap.ui.core" 
+    xmlns:mvc="sap.ui.core.mvc" 
+    xmlns="sap.m"
+    xmlns:l="sap.ui.layout" 
+    xmlns:f="sap.ui.layout.form"
+    xmlns:t="sap.ui.table" 
+    xmlns:s="sap.m.semantic" 
+    xmlns:custom="http://schemas.sap.com/sapui5/extension/sap.ui.core.CustomData/1">
+    	
+  
+    	<Dialog title="Aviso" id="dlg_MensajeAvisoAddCenAlmLot" stretchOnPhone="true" contentWidth="2%" 
+            contentHeight="9%">
+
+        <content>
+            <Text id="lb_datos" text="" visible="false"></Text>
+            <Text text="Desea agregar el Centro/Lote/Almacen?"></Text>
+        </content>
+        <beginButton>
+            <Button text="Si" type="Accept" press="onSiMensajeAvisoAddCenAlmLot"></Button>
+        </beginButton>
+        <endButton>
+            <Button text="No" type="Reject" press="onNoMensajeAvisoAddCenAlmLot"></Button>
+        </endButton>
+    </Dialog>
+
+
+
+    </core:FragmentDefinition>

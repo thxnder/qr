@@ -1,0 +1,70 @@
+<core:FragmentDefinition 
+    xmlns:core="sap.ui.core" 
+    xmlns:mvc="sap.ui.core.mvc" 
+    xmlns="sap.m"
+     xmlns:l="sap.ui.layout" 
+     xmlns:f="sap.ui.layout.form"
+    xmlns:t="sap.ui.table" 
+    xmlns:s="sap.m.semantic" 
+    xmlns:custom="http://schemas.sap.com/sapui5/extension/sap.ui.core.CustomData/1">
+        
+
+
+
+    <Dialog title="Stock Disponible" class="cabecera_buscarDoc" id="dlg_stockDisponibleOnDialog" contentWidth="100%" contentHeight="100%" stretch="false">
+        <customHeader>
+            <Toolbar>
+                            <Bar>
+                    
+                                <contentLeft>
+                                <Button text="Volver" icon="sap-icon://navigation-left-arrow" press="onVolverListaMateriales"></Button>
+                                </contentLeft>
+                            </Bar>
+                        </Toolbar>
+                
+            </customHeader>
+        <content>
+            <Panel>
+            <List id="lista_StockDisponible" selectionChange="" mode="SingleSelectMaster" growing="false" growingThreshold="30" growingDirection="Upwards" busyIndicatorDelay="200"
+                        enableBusyIndicator="false" growingTriggerText="Previous Products" noDataText="No hay Centro/Almacen/Lote" 
+                        itemPress=""  
+
+                        items="{
+                        path : '/listaStockMaterial',
+                                sorter : {
+                                    path : 'DescCentro',
+                                    descending: false,
+                                    group: true
+                                }
+                        }">
+
+                        <items>
+                                <ObjectListItem                                    
+                                    title="stock: {StockDisponible}"
+                                    type="Navigation"
+                                    press=""
+                                    custom:to="">
+                                    <attributes>
+                                        <ObjectAttribute text="{CodCentro} {DescCentro} / {DescAlmacen} / {CodLote}"/>
+                                    </attributes>
+                                </ObjectListItem>
+                            </items>
+                            <headerToolbar>
+                                <Toolbar>
+                                    <Title text="{/tituloStock}" level="H3" />
+                                    <ToolbarSpacer />
+                                </Toolbar>
+                            </headerToolbar>      
+                    </List>             
+                    </Panel>
+        </content>
+         <buttons>
+            <Button text="Añadir" class="btn_aceptar" type="Accept" icon="sap-icon://add" press="onDocNuevoAnadirMaterial"></Button>
+            <Button text="Cancelar" class="btn_aceptar" type="Reject" icon="sap-icon://sys-cancel" press="onNoMensajeAvisoStock"></Button>
+        </buttons>
+
+    </Dialog>
+
+
+        
+    </core:FragmentDefinition>

@@ -1,0 +1,375 @@
+﻿<mvc:View 
+    height="100%" 
+    xmlns:core="sap.ui.core" 
+    xmlns:mvc="sap.ui.core.mvc" 
+    xmlns="sap.m" 
+    controllerName="pe.com.seidor.sap.decor.ventas.controller.Reclamos.RecBuscar" 
+    xmlns:l="sap.ui.layout" 
+    xmlns:f="sap.ui.layout.form" 
+    xmlns:t="sap.ui.table" 
+    xmlns:s="sap.m.semantic" 
+    xmlns:tnt="sap.tnt" 
+    xmlns:custom="http://schemas.sap.com/sapui5/extension/sap.ui.core.CustomData/1" displayBlock="true">
+
+    
+    
+    
+    <SplitContainer id="SplitAppId" initialMaster="MasterRecNuevo" initialDetail="pag_rec_nuevo_reclamo" orientationChange="onOrientationChange" >
+        <masterPages>
+            <!--Master Nuevo Reclamo-->
+
+            <core:Fragment fragmentName="pe.com.seidor.sap.decor.ventas.view.Reclamos.Frag.Master.RecMasterNuevoFragment" type="XML"></core:Fragment>
+
+            <!--Master Interlocutor Buscar Cliente-->
+            <core:Fragment fragmentName="pe.com.seidor.sap.decor.ventas.view.Reclamos.Frag.Master.RecMasterBusClienteFragment" type="XML"></core:Fragment>
+            
+        </masterPages>
+
+        <detailPages>
+
+            <!--Detail Nuevo Reclamo-->
+            <core:Fragment fragmentName="pe.com.seidor.sap.decor.ventas.view.Reclamos.Frag.Detail.RecDetailNuevoFragment" type="XML"></core:Fragment>
+
+            <!--Detail Interlocutores-->
+            <core:Fragment fragmentName="pe.com.seidor.sap.decor.ventas.view.Reclamos.Frag.Detail.RecDetailInterlocutoresFragment" type="XML"></core:Fragment>
+
+
+
+            <!--Detail Datos de Reclamo-->
+            <core:Fragment fragmentName="pe.com.seidor.sap.decor.ventas.view.Reclamos.Frag.Detail.RecDetailDatosReclamoFragment" type="XML"></core:Fragment>
+
+
+            <!--Detail Cambiar Status-->
+            <core:Fragment fragmentName="pe.com.seidor.sap.decor.ventas.view.Reclamos.Frag.Detail.RecDetailCambiarStatusFragment" type="XML"></core:Fragment>
+
+<BusyDialog id="loadingControl" />
+            <!--Dialog Buscar Rec Nuevo-->
+    <Dialog title="Buscar Reclamo" class="cabecera_dialogo" id="dlg_recBuscar_inicio" stretchOnPhone="true" contentWidth="30%" contentHeight="90%">
+        <content>
+
+            <f:Form 
+            minWidth="1024"
+            maxContainerCols="4"
+            editable="true">
+            <f:title>
+                <!--<core:Title text="Address" />-->
+            </f:title>
+            <f:layout>
+                <f:ResponsiveGridLayout
+                    labelSpanXL="3"
+                                    labelSpanL="3"
+                                    labelSpanM="3"
+                                    labelSpanS="5"
+                                    adjustLabelSpan="false"
+                                    emptySpanXL="4"
+                                    emptySpanL="4"
+                                    emptySpanM="4"
+                                    emptySpanS="0"
+                                    columnsXL="1"
+                                    columnsL="1"
+                                    columnsM="1"
+                                    singleContainerFullSize="false" />
+            </f:layout>
+            <f:formContainers>
+                <f:FormContainer>
+                    <f:formElements>
+                        <f:FormElement label="Número de Reclamo">
+                            <f:fields>
+                                <SearchField placeholder="Ingrese Nro. de Reclamo" id="txt_pNumeroReclamo" value="{/datosRecBuscar/pNumeroReclamo}" showSearchButton="false"></SearchField>
+                            </f:fields>
+                        </f:FormElement>
+
+                        <f:FormElement label="Pedido de Venta">
+                            <f:fields>
+                                <SearchField placeholder="Ingrese Pedido de Venta" id="txt_pNumeroPedido" value="{/datosRecBuscar/pNumeroPedido}" showSearchButton="false"></SearchField>
+                            </f:fields>
+                        </f:FormElement>
+
+                        <f:FormElement label="Cliente">
+                            <f:fields>
+                               <SearchField placeholder="Ingrese Cliente" id="txt_pCodigoCliente" value="{/datosRecBuscar/pCodigoCliente}" showSearchButton="false"></SearchField>
+                            </f:fields>
+                        </f:FormElement>
+
+                        <f:FormElement label="Nombre de Cliente">
+                            <f:fields>
+                                <SearchField placeholder="Ingrese Nombre Cliente" id="txt_pNombreCliente" value="{/datosRecBuscar/pNombreCliente}" showSearchButton="false"></SearchField>
+                            </f:fields>
+                        </f:FormElement>
+
+                        <f:FormElement label="Material">
+                            <f:fields>
+                                <SearchField placeholder="Ingrese Nro. de Material" id="txt_pMaterial" value="{/datosRecBuscar/pMaterial}" showSearchButton="false"></SearchField>
+                            </f:fields>
+                        </f:FormElement>
+
+                        <f:FormElement label="Fecha Inicio">
+                            <f:fields>
+                                <DatePicker valueFormat="dd/MM/YYYY" displayFormat="dd/MM/YYYY" id="txt_pFechaCreacionI" value="{/datosRecBuscar/fecini}">
+                                </DatePicker>
+                            </f:fields>
+                        </f:FormElement>
+
+                        <f:FormElement label="Fecha Fin">
+                            <f:fields>
+                               <DatePicker valueFormat="dd/MM/YYYY" displayFormat="dd/MM/YYYY" id="txt_pFechaCreacionF" value="{/datosRecBuscar/fecfin}">
+                            </DatePicker>
+                            </f:fields>
+                        </f:FormElement>
+
+                         <f:FormElement label="Estado">
+                            <f:fields>
+                                <Select items="{ path : '/dataIni/lstStatusRecl' }" maxwidth="100%" required="true" selectedKey="{/datosRecBuscar/pEstado}">
+                                    <core:Item key="{Codigo}" text="{Descripcion}"/>
+                                </Select>
+                            </f:fields>              
+                        </f:FormElement>
+
+                        <f:FormElement label="Usuario">
+                            <f:fields>
+                                <SearchField placeholder="" id="txt_pUsuario" value="{/datosRecBuscar/pUsuario}" showSearchButton="false"></SearchField>
+                            </f:fields>
+                        </f:FormElement>
+
+                    </f:formElements>
+                </f:FormContainer>
+            </f:formContainers>
+        </f:Form>
+        </content>
+        <beginButton>
+            <Button text="Buscar" class="btn_aceptar" type="Accion" icon="sap-icon://search" press="onBuscarDlg_recBuscar_inicio" />
+        </beginButton>
+        <endButton>
+            <Button text="Cancel" class="btn_cancelar" type="Reject" icon="sap-icon://sys-cancel" press="goHome" />
+        </endButton>
+    </Dialog>
+
+<Dialog title="Lista de Reclamos" class="cabecera_buscarDoc" id="dlg_lista_recBuscar" stretchOnPhone="true" contentWidth="80%" contentHeight="80%" >
+    <customHeader>
+            <Toolbar width="100%">
+                            <Bar width="100%">
+                    
+                                <contentLeft>
+                                <Button text="Volver" icon="sap-icon://navigation-left-arrow" press="onVolver"></Button>
+                                </contentLeft>
+                            </Bar>
+                        </Toolbar>
+                
+            </customHeader>
+            <Panel>
+                     <List id="listaDocumentosBuscarDoc"  mode="SingleSelectMaster" growing="false" growingThreshold="30" growingDirection="Upwards" busyIndicatorDelay="200"
+                              enableBusyIndicator="false" growingTriggerText="Previous Products" noDataText="No hay Documentos" 
+                              itemPress="onListaBuscarDoc"  
+                              items="{
+                        path : '/listaReclamos'
+                        }"
+                >
+                <CustomListItem height="auto">
+                <FlexBox
+                        alignItems="Start"
+                        justifyContent="SpaceBetween" >
+                        <items>
+                                <FlexBox
+                        alignItems="Start" width="35%">
+                        <items>
+                                <FlexBox
+                                    height="45px"
+                        alignItems="Start"
+                        justifyContent="Start">
+                        <items>
+
+                                <Button width="100%" height="auto" id="btnImagenDocBuscar" type="Transparent" icon="sap-icon://database" press="" >
+                                    <layoutData>
+                                <FlexItemData growFactor="1" />
+                            </layoutData>
+                                </Button>
+
+                            </items>
+                        </FlexBox>
+
+
+                        <FlexBox
+                                    height="40px"
+                        alignItems="End"
+                        justifyContent="End">
+                        <items>
+                                <Text width="100%" class="lblDetalleProducto" text="N° Documento: {VBELN} - {KTABG}  \n {NAME1}">
+                                    <layoutData>
+                                <FlexItemData growFactor="3" />
+                            </layoutData>
+                                </Text>
+
+                            </items>
+                        </FlexBox>
+                              </items>
+                            </FlexBox>
+
+                            <!--FlexBox
+                                    height="30px"
+                        alignItems="End"
+                        justifyContent="End">
+                        <items>
+
+                            <Text width="100%" class="lblDetalleProducto" text="{ClaseDocumento} \n {FechaDocumento}" textAlign="Center">
+                                    <layoutData>
+                                <FlexItemData growFactor="3" />
+                            </layoutData>
+                                </Text>
+
+                                </items>
+                        </FlexBox-->
+
+
+                                
+
+
+                                <!--VBox justifyContent="Center" width="35px">
+                                </VBox-->
+
+                                <FlexBox
+                                    height="45px"
+                        alignItems="End"
+                        justifyContent="End">
+                        <items>
+                                <Text width="100%" class="lblDetalleProducto" text="Material: {MATNR} - {MAKTX} \n {STAT}" textAlign="Left">
+                                    <layoutData>
+                                <FlexItemData growFactor="3" />
+                            </layoutData>
+                                </Text>
+
+                                <Button width="100%" height="auto" id="btnDetalleProducto" type="Transparent" icon="sap-icon://navigation-right-arrow" press="onVerDlg_lista_recBuscar">
+                                    <layoutData>
+                                <FlexItemData growFactor="2" />
+                            </layoutData>
+                                </Button>
+                            </items>
+                            </FlexBox>
+
+                    </items>
+                </FlexBox>
+                </CustomListItem>
+                </List>
+            </Panel>
+
+        
+    </Dialog>
+
+
+
+
+
+
+
+    <!--Dialog Lista de  Reclamos-->
+    <Dialog title="Lista de Reclamos" class="cabecera_dialogo" id="dlg_DocBuscarLista" stretchOnPhone="true" contentWidth="60%" contentHeight="75%">
+        <content>
+            <Panel>
+                <content>
+                    
+                    <List mode="SingleSelectMaster"  items="{/listaReclamos}" 
+                        growing="false" growingThreshold="10" growingDirection="Upwards" busyIndicatorDelay="200"
+                        enableBusyIndicator="true"  noDataText="No hay Reclamos Disponibles" itemPress="onSeleccionarReclamo">
+                        <items>
+                            <!--StandardListItem selected="true" title="N°de Reclamo:{VBELN} - {KTABG}"  custom:to=""/-->
+                            <ObjectListItem
+                                intro = "N° Documento: {VBELN} - {KTABG}"
+                                title="{NAME1}"
+                                type="Active">
+                                <firstStatus>
+                                    <ObjectStatus
+                                        text="{STAT}"/>
+                                </firstStatus>
+                                <secondStatus>
+                                        <ObjectStatus
+                                        title="Material" text="{MATNR} - {MAKTX}"/>
+                                </secondStatus>
+                                <!--attributes>
+                                    <ObjectAttribute title="Material" text="{MAKTX}" />
+                                </attributes-->
+                            </ObjectListItem>
+                        </items>
+                    </List>
+                </content>
+            </Panel>
+        </content>
+        <beginButton>
+            <Button text="Ver" class="btn_aceptar" type="Accion" icon="sap-icon://view" press="onVerDlg_lista_recBuscar" />
+        </beginButton>
+        <endButton>
+            <Button text="Cancel" class="btn_cancelar" type="Reject" icon="sap-icon://sys-cancel" press="onOpendlg_list_reclamos" />
+        </endButton>
+    </Dialog>
+    <!--Dialog Interlocutores Buscar Rec Nuevo-->
+    <Dialog title="Buscar Cliente" class="cabecera_dialogo" id="dlg_buscar_rec_nuevo" stretchOnPhone="true" contentWidth="20%" contentHeight="45%">
+        <content>
+            <Panel>
+                <content>
+
+                    <f:Form 
+            minWidth="1024"
+            maxContainerCols="4"
+            editable="true">
+            <f:title>
+                <!--<core:Title text="Address" />-->
+            </f:title>
+            <f:layout>
+                <f:ResponsiveGridLayout
+                    labelSpanXL="3"
+                                    labelSpanL="3"
+                                    labelSpanM="3"
+                                    labelSpanS="5"
+                                    adjustLabelSpan="false"
+                                    emptySpanXL="4"
+                                    emptySpanL="4"
+                                    emptySpanM="4"
+                                    emptySpanS="0"
+                                    columnsXL="1"
+                                    columnsL="1"
+                                    columnsM="1"
+                                    singleContainerFullSize="false" />
+            </f:layout>
+            <f:formContainers>
+                <f:FormContainer>
+                    <f:formElements>
+                        <f:FormElement label="RUC / DNI">
+                            <f:fields>
+                                <Input placeholder="Ingrese RUC o Nro. de DNI" value="" id="txt_ruc_cliente_busqueda"></Input>
+                            </f:fields>
+                        </f:FormElement>
+                        <f:FormElement label="Razón Social">
+                            <f:fields>
+                                <Input placeholder="Ingrese Razón Social" value="" id="txt_nombre_cliente_busqueda"></Input>
+                            </f:fields>
+                        </f:FormElement>
+                    </f:formElements>
+                </f:FormContainer>
+            </f:formContainers>
+        </f:Form>
+                </content>
+            </Panel>
+        </content>
+        <beginButton>
+            <Button text="Buscar" class="btn_aceptar" type="Accion" icon="sap-icon://search" press="onCarga"></Button>
+        </beginButton>
+        <endButton>
+            <Button text="Cancel" class="btn_cancelar" type="Reject" icon="sap-icon://sys-cancel" press="onCarga" />
+        </endButton>
+    </Dialog>
+    
+    <Dialog title="Aviso" id="dlg_MensajeAvisoGeneralRec" stretchOnPhone="true" contentWidth="1%" contentHeight="9%">
+        <content>
+            <FlexBox
+                    alignItems="Center"
+                    justifyContent="Center">
+            <Text id="txt_aviso_generalRec" text="Los datos del solicitante se copiaron"></Text>
+        </FlexBox>
+        </content>
+        <beginButton>
+            <Button text="OK" type="Accept" press="onOkDlg_MensajeAvisoGeneral"></Button>
+        </beginButton>
+    </Dialog>
+            
+        </detailPages>
+    </SplitContainer>
+
+</mvc:View>

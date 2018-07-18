@@ -1,0 +1,225 @@
+<core:FragmentDefinition 
+    xmlns:core="sap.ui.core" 
+    xmlns:mvc="sap.ui.core.mvc" 
+    xmlns="sap.m"
+     xmlns:l="sap.ui.layout" 
+     xmlns:f="sap.ui.layout.form"
+    xmlns:t="sap.ui.table" 
+    xmlns:s="sap.m.semantic" 
+    xmlns:custom="http://schemas.sap.com/sapui5/extension/sap.ui.core.CustomData/1"
+    xmlns:tnt="sap.tnt">
+        
+
+
+
+    <Dialog title="Descuentos" class="cabecera_buscarDoc" id="dlg_DialogDocDscto" contentWidth="100%" contentHeight="100%" stretch="false">
+        <customHeader>
+            <Toolbar>
+                                 <tnt:ToolHeader width="100%">
+        <Text text="Posición: {/material/Posicion} - {/material/CodMaterialCorto}" wrapping="false">
+                                <layoutData>
+                                    <OverflowToolbarLayoutData priority="Disappear" />
+                                </layoutData>
+                            </Text>
+        <ToolbarSpacer width="27%"/>
+                <FlexBox
+                    alignItems="Start"
+                    justifyContent="Center">
+                    <items>
+                        <!--core:Icon src="sap-icon://activate">
+                            </core:Icon-->
+                            
+                            <Button icon="sap-icon://slim-arrow-down"  type="Transparent" press="goPosicioMaterialDown" visible="{/pedido/enabledIconoAdd}">
+                        <layoutData>
+                            <OverflowToolbarLayoutData priority="NeverOverflow" />
+                        </layoutData>
+                    </Button>
+                    <Button icon="sap-icon://slim-arrow-up"  type="Transparent" press="goPosicioMaterialUp" visible="{/pedido/enabledIconoAdd}">
+                        <layoutData>
+                            <OverflowToolbarLayoutData priority="NeverOverflow" />
+                        </layoutData>
+                    </Button>
+                    </items>
+                </FlexBox>
+        
+        <ToolbarSpacer/>
+        
+                    <Button icon="sap-icon://sys-enter" tooltip="Guardar Material" press="onGuardarDetalleMaterialMultiple" visible="{/pedido/enabledIconoAdd}">
+                        <layoutData>
+                            <OverflowToolbarLayoutData priority="NeverOverflow" />
+                        </layoutData>
+                    </Button>
+ 
+    </tnt:ToolHeader>
+                            </Toolbar>
+                
+            </customHeader>
+        <content>
+            <Panel>
+                    <Table id="idDescuentoPrincipalDialog"
+                            items="{
+                                path: '/material/DescuentoPrincipalReserva',
+                                sorter: {
+                                    path: 'Condicion'
+                                }
+                            }">
+                            <headerToolbar>
+                                <Toolbar>
+                                    <Title text="Descuentos Principales: {/material/DescMaterial}" level="H2"/>
+                                    <!--ToolbarSpacer/>
+                                                <Button
+                                                    type="Emphasized"
+                                                    text="Otros Dsct."
+                                                    press="onDsctoOtrosDialog"
+                                                    tooltip="Otros Dsct."/-->
+                                </Toolbar>
+                                
+                            </headerToolbar>
+                            <columns>
+                                <Column
+                                    width="30%"
+                                    hAlign="left"
+                                    styleClass="cellBorderLeft cellBorderRight">                                    
+                                    <Text text="Condicion - Denominacion" />
+                                </Column>                                
+                                <Column
+                                    styleClass="cellBorderRight"                                    
+                                    hAlign="Center">
+                                    <Text text="Maximo" />
+                                </Column>
+                                <Column
+                                    styleClass="cellBorderRight"                                    
+                                    hAlign="Center">
+                                    <Text text="Porcentaje" />
+                                </Column>
+                                  
+                                <Column
+                                    styleClass="cellBorderRight"                                    
+                                    hAlign="Center">
+                                    <Text text="Valor de Descuento" />
+                                </Column>
+                                <Column
+                                    hAlign="Center"
+                                    styleClass="cellBorderRight">
+                                    <Text text="" />
+                                </Column> 
+                                <!--Column
+                                    styleClass="cellBorderRight"                                    
+                                    hAlign="Center">
+                                    <Text text="Posicion" />
+                                </Column-->
+                                                               
+                            </columns>
+                            <items>
+                                <ColumnListItem>
+                                    <cells>
+                                        <Text
+                                            text="{Condicion} - {Denominacion}" />
+                                        <Text
+                                            text="{LimiteInferior} %" />
+                                        <Input 
+                                            styleClass="inputHeight"
+                                            value="{Importe}" />
+                                        <!--<Text
+                                            text="{Importe} %" />     -->                                           
+                                         
+                                        <Text
+                                            text="{Valor}" />
+                                            <Button
+                                            icon="sap-icon://{iconBtnCalcular}"
+                                            tooltip="Calcular descuento"
+                                            press="onCalcularDescuentoPrincipal" /> 
+                                        <!--Text
+                                            text="{/material/PosicionCorto}" /-->
+                                                                                                                                 
+                                    </cells>
+                                </ColumnListItem>
+                            </items>
+                        </Table>
+                
+                    <Table id="idDescuentoOtrosDialog"
+                            items="{
+                                path: '/material/DescuentoOtrosReserva',
+                                sorter: {
+                                    path: 'Condicion'
+                                }
+                            }">
+                            <headerToolbar>
+                                <Toolbar>
+                                    <Title text="Otros Descuentos: {/material/DescMaterial}" level="H2"/>
+                                </Toolbar>
+                            </headerToolbar>
+                            <columns class="sapUiTinyMargin">
+                                <Column
+                                    width="30%"
+                                    hAlign="left"
+                                    styleClass="cellBorderLeft cellBorderRight">
+                                    <Text text="Condicion - Denominacion" />
+                                </Column>                                
+                                <Column
+                                    hAlign="Center"
+                                    styleClass="cellBorderRight">
+                                    <Text text="Maximo" />
+                                </Column>
+                                <Column
+                                    hAlign="Center"
+                                    styleClass="cellBorderRight">
+                                    <Text text="Porcentaje" />
+                                </Column>
+                                
+                                <Column
+                                    hAlign="Center"
+                                    styleClass="cellBorderRight">
+                                    <Text text="Valor de Descuento" />
+                                </Column>
+                                <Column
+                                    hAlign="Center"
+                                    styleClass="cellBorderRight">
+                                    <Text text="" />
+                                </Column> 
+                                <!--Column
+                                    hAlign="Center"
+                                    styleClass="cellBorderRight">
+                                    <Text text="Posicion" />
+                                </Column-->
+                                                               
+                            </columns>
+                            <items>
+                                <ColumnListItem>
+                                    <cells>
+                                        <Text
+                                            text="{Condicion} - {Denominacion}" />
+                                        <Text
+                                            text="{LimiteInferior} %" />
+                                        <Input 
+                                            styleClass="inputHeight"
+                                            value="{Importe}" />
+                                        <!--<Text
+                                            text="{Importe} %" />     -->
+
+                                                                             
+                                        <Text
+                                            text="{Valor}" />
+                                            <Button
+                                            icon="sap-icon://{iconBtnCalcular}"
+                                            tooltip="Calcular descuento"
+                                            press="onCalcularDescuentoOtros" />  
+                                        <!--Text
+                                            text="{/material/PosicionCorto}" /-->
+                                                                                      
+                                    </cells>
+                                </ColumnListItem>
+                            </items>
+                        </Table>   
+
+            </Panel>
+        </content>
+         <buttons>
+            <Button text="Cancel" class="btn_cancelar" type="Reject" icon="sap-icon://sys-cancel" press="onCanceldlg_DialogDocDscto"/>
+        </buttons>
+
+    </Dialog>
+
+
+        
+    </core:FragmentDefinition>

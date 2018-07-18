@@ -1,0 +1,155 @@
+
+<mvc:View
+	height="100%"
+	xmlns:core="sap.ui.core"
+	xmlns:mvc="sap.ui.core.mvc"
+	xmlns="sap.m"
+	controllerName="pe.com.seidor.sap.decor.ventas.controller.Usuario.UsuInformacion"
+	xmlns:l="sap.ui.layout" 
+    xmlns:f="sap.ui.layout.form"
+    xmlns:t="sap.ui.table" 
+    xmlns:s="sap.m.semantic"
+
+    xmlns:custom="http://schemas.sap.com/sapui5/extension/sap.ui.core.CustomData/1"
+		displayBlock="true">
+
+
+<s:FullscreenPage title="Datos de Usuario"
+                                     id="SplitAppId" class="cabecera_dialogo">
+
+                                     <Panel>
+                            <content>
+
+                                <f:Form 
+            minWidth="1024"
+            maxContainerCols="2"
+            editable="true">
+            <f:title>
+                <core:Title text="Datos Generales" />
+            </f:title>
+            <f:layout>
+                <f:ResponsiveGridLayout
+                    labelSpanXL="3"
+                                    labelSpanL="3"
+                                    labelSpanM="3"
+                                    labelSpanS="6"
+                                    adjustLabelSpan="false"
+                                    emptySpanXL="4"
+                                    emptySpanL="4"
+                                    emptySpanM="4"
+                                    emptySpanS="0"
+                                    columnsXL="1"
+                                    columnsL="1"
+                                    columnsM="1"
+                                    singleContainerFullSize="false" />
+            </f:layout>
+            <f:formContainers>
+                <f:FormContainer>
+                    <f:formElements>
+                        <f:FormElement label="Usuario SAP">
+                            <f:fields>
+                                    <Input  value="{/informacionUsuario/Usuario}" editable="false"></Input>
+                            </f:fields>
+                        </f:FormElement>
+
+                        <f:FormElement label="Código de Asesor">
+                            <f:fields>
+                                    <Input value="{/informacionUsuario/extcomp1007}" editable="false"></Input>
+                            </f:fields>
+                        </f:FormElement>
+
+                        <f:FormElement label="Nombre de Asesor">
+                            <f:fields>
+                                    <Input value="{/informacionUsuario/extcomp1008}" editable="false"></Input>
+                            </f:fields>
+                        </f:FormElement>
+
+                        <f:FormElement label="Organización de Ventas">
+                            <f:fields>
+                                    <Input value="{/informacionUsuario/extcomp1009}" editable="false"></Input>
+                            </f:fields>
+                        </f:FormElement>
+
+                        <f:FormElement label="Canal de Ventas">
+                            <f:fields>
+                                    <Input value="{/informacionUsuario/extcomp1010}" editable="false"></Input>
+                            </f:fields>
+                        </f:FormElement>
+
+                        <f:FormElement label="Correo Electrónico">
+                            <f:fields>
+                                    <Input value="{/informacionUsuario/extcomp1011}" editable="false"></Input>
+                            </f:fields>
+                        </f:FormElement>
+
+                    </f:formElements>
+                </f:FormContainer>
+            </f:formContainers>
+        </f:Form>
+
+
+
+
+        <f:Form 
+            minWidth="1024"
+            maxContainerCols="2"
+            editable="true">
+            <f:title>
+                <core:Title text="Cambio de Contraseña" />
+            </f:title>
+            <f:layout>
+                <f:ResponsiveGridLayout
+                    labelSpanXL="3"
+                                    labelSpanL="3"
+                                    labelSpanM="3"
+                                    labelSpanS="6"
+                                    adjustLabelSpan="false"
+                                    emptySpanXL="4"
+                                    emptySpanL="4"
+                                    emptySpanM="4"
+                                    emptySpanS="0"
+                                    columnsXL="1"
+                                    columnsL="1"
+                                    columnsM="1"
+                                    singleContainerFullSize="false" />
+            </f:layout>
+            <f:formContainers>
+                <f:FormContainer>
+                    <f:formElements>
+                        <f:FormElement label="Contraseña Actual">
+                            <f:fields>
+                                    <Input value="{/informacionUsuario/curPassword}" type="Password"></Input>
+                            </f:fields>
+                        </f:FormElement>
+
+                        <f:FormElement label="Contraseña Nueva">
+                            <f:fields>
+                                    <Input value="{/informacionUsuario/newPassword}" type="Password"></Input>
+                            </f:fields>
+                        </f:FormElement>
+
+                        <f:FormElement label="Repetir Contraseña Nueva">
+                            <f:fields>
+                                    <Input value="{/informacionUsuario/newPassword2}" type="Password"></Input>
+                            </f:fields>
+                        </f:FormElement>
+
+                        
+
+                    </f:formElements>
+                </f:FormContainer>
+            </f:formContainers>
+        </f:Form>
+
+                        
+                            </content>
+                        </Panel>
+                    
+                    <s:customFooterContent>
+                    <Button text="Guardar" icon="sap-icon://save" press="onGuardarInformacionUsuario"></Button>
+                </s:customFooterContent>
+                   
+ 
+            </s:FullscreenPage>
+ 
+</mvc:View>

@@ -1,0 +1,120 @@
+<core:FragmentDefinition 
+    xmlns:core="sap.ui.core" 
+    xmlns:mvc="sap.ui.core.mvc" 
+    xmlns="sap.m"
+     xmlns:l="sap.ui.layout" 
+     xmlns:f="sap.ui.layout.form"
+    xmlns:t="sap.ui.table" 
+    xmlns:s="sap.m.semantic" 
+    xmlns:custom="http://schemas.sap.com/sapui5/extension/sap.ui.core.CustomData/1"
+    xmlns:tnt="sap.tnt">
+        
+
+
+
+    <!-- // GENERACION DE PDF -->
+            <Dialog id="dlg_preview_pdfDocBus" class="dlg_pdf cabecera_dialogo" showHeader="false" stretchOnPhone="true" contentWidth="100%" contentHeight="100%">
+                
+                <content>
+                    <NavContainer id="navConPDFDocBus" width="100%" height="100%">
+                        <Page id="pgGeneracionDocBus" title="Generación de PDF" class="cabecera_pdf">
+                            <content>
+                                <core:HTML id="pdfViewerHTMLDocBus" content='' />
+                            </content>
+                            <footer>
+                                <Toolbar>
+                                    <Button text="Cancel" type="Accion" icon="sap-icon://sys-cancel" press="onCerrarPrevisualizar" />
+                                    <ToolbarSpacer/>
+                                    <Button text="Confirmar" type="Accion" icon="sap-icon://accept" press="onGenerarPDFDoc" />
+                                </Toolbar>
+                            </footer>
+                        </Page>
+                        <Page id="pgPrevisualizacionDocBus" title="Previsualización PDF" class="cabecera_pdf">
+                            <customHeader>
+                                        <Toolbar>
+                                            <Bar>
+                                    
+                                                <contentLeft>
+                                                <Button text="Volver" icon="sap-icon://navigation-left-arrow" press="onVolverPgPrevisualizacion"></Button>
+                                                </contentLeft>
+                                            </Bar>
+                                        </Toolbar>
+                                
+                            </customHeader>
+                            <content>
+                                <core:HTML id="pdfViewerHTML2DocBus" content='' />
+                            </content>
+                            <footer>
+                                <Toolbar>
+                                    <Button text="Cancel" type="Accion" icon="sap-icon://sys-cancel" press="onCerrarPrevisualizar" />
+                                    <ToolbarSpacer/>
+                                    <Button text="Confirmar" type="Accion" icon="sap-icon://accept" press="onGenerarPDFDocFirmadoSend" />
+                                </Toolbar>
+                            </footer>
+                        </Page>
+                        <Page id="pgFirmaDocBus" title="Firma de documento" class="cabecera_pdf">
+                            <customHeader>
+                                        <Toolbar>
+                                            <Bar>
+                                    
+                                                <contentLeft>
+                                                <Button text="Volver" icon="sap-icon://navigation-left-arrow" press="onVolverPgFirma"></Button>
+                                                </contentLeft>
+                                            </Bar>
+                                        </Toolbar>
+                                
+                            </customHeader>
+                            <content>
+                                <FlexBox height="100%" class="flex_firma" alignItems="Center" justifyContent="Center">
+                                    <items>
+                                        <core:HTML id="pdfViewerFirmaDocBus" content='' />
+                                    </items>
+                                </FlexBox>
+                            </content>
+                            <footer>
+                                <Toolbar>
+                                    <Button text="Cancel" type="Accion" icon="sap-icon://sys-cancel" press="onCerrarPrevisualizar" />
+                                    <ToolbarSpacer/>
+                                    <Button text="Limpiar" type="Accion" icon="sap-icon://delete" press="fnLimpiarFirma" />
+                                    <Button text="Firmar" type="Accion" icon="sap-icon://decision" press="onGenerarPDFDocFirmado" />
+                                </Toolbar>
+                            </footer>
+                        </Page>
+                        <Page id="pgCorreoDocBus" title="Editor de correo" class="cabecera_pdf">
+                            <customHeader>
+                                        <Toolbar>
+                                            <Bar>
+                                    
+                                                <contentLeft>
+                                                <Button text="Volver" icon="sap-icon://navigation-left-arrow" press="onVolverPgCorreo"></Button>
+                                                </contentLeft>
+                                            </Bar>
+                                        </Toolbar>
+                                
+                            </customHeader>
+                            <content>
+                                    <f:SimpleForm editable="true" layout="ResponsiveGridLayout" labelSpanL="12" labelSpanM="12" emptySpanL="1" emptySpanM="0" columnsL="0" columnsM="0">
+                                        <f:content>
+                                            <Label text="Asunto"/>
+                                            <Input width="100%" id="txtAsuntoCorreoDocBus"/>
+                                            <Label text="Cuerpo"/>
+                                            <TextArea id="txtCuerpoCorreoDocBus" rows="12" width="100%" />
+                                        </f:content>
+                                    </f:SimpleForm>
+                            </content>
+                            <footer>
+                                <Toolbar>
+                                    <Button text="Cancel" type="Accion" icon="sap-icon://sys-cancel" press="onCerrarPrevisualizar" />
+                                    <ToolbarSpacer/>
+                                    <Button text="Enviar" type="Accion" icon="sap-icon://paper-plane" press="onEnviarPDF" />
+                                </Toolbar>
+                            </footer>
+                        </Page>
+                    </NavContainer>
+                </content>
+            </Dialog>
+            <!--End PDF-->
+
+
+        
+    </core:FragmentDefinition>
