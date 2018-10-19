@@ -7,10 +7,8 @@ sap.ui.define([
 	"com/decor/ubicaciones/servicio/services",
 	"com/decor/ubicaciones/controladores",
 	"com/decor/ubicaciones/formatter/formatter",
-	"com/decor/ubicaciones/validacion/validaciones",
-	"jquery.sap.global",
-	"sap/ui/model/json/JSONModel"
-], function (BaseController, UIComponent, models, utilController, utilUI, services,controladores,formatter,validaciones,jQuery,JSONModel) {
+	"com/decor/ubicaciones/validacion/validaciones"
+], function (BaseController, UIComponent, models, utilController, utilUI, services,controladores,formatter,validaciones) {
 	"use strict";
 
 	return BaseController.extend("com.decor.ubicaciones.controller.Login", {
@@ -25,59 +23,8 @@ sap.ui.define([
 				utilController.initModelView(this);
 				utilController.property(this, "/Usuario", models.usuario());
 				utilController.refreshModel(this);
-				this._sValidPath = jQuery.sap.getModulePath("sap.m.sample.PDFViewerEmbedded", "/sample.pdf");
-			this._sInvalidPath = jQuery.sap.getModulePath("sap.m.sample.PDFViewerEmbedded", "/sample_nonexisting.pdf");
-			this._oModel = new JSONModel({
-				Source: "http://www.pdf995.com/samples/pdf.pdf",
-				Title: "My Custom Title",
-				Height: "600px"
-			});
-			this.getView().setModel(this._oModel);
+
 			}
-		},
-		onCorrectPathClick: function() {
-			function cancelZoom()
-{
-    var d = document,
-        viewport,
-        content,
-        maxScale = ',maximum-scale=',
-        maxScaleRegex = /,*maximum\-scale\=\d*\.*\d*/;
-
-    // this should be a focusable DOM Element
-    if(!this.addEventListener || !d.querySelector) {
-        return;
-    }
-
-    viewport = d.querySelector('meta[name="viewport"]');
-    content = viewport.content;
-
-    function changeViewport(event)
-    {
-        // http://nerd.vasilis.nl/prevent-ios-from-zooming-onfocus/
-        viewport.content = content + (event.type == 'blur' ? (content.match(maxScaleRegex, '') ? '' : maxScale + 10) : maxScale + 1);
-    }
-
-    // We could use DOMFocusIn here, but it's deprecated.
-    this.addEventListener('focus', changeViewport, true);
-    this.addEventListener('blur', changeViewport, false);
-}
-
-// jQuery-plugin
-(function($)
-{
-    $.fn.cancelZoom = function()
-    {
-        return this.each(cancelZoom);
-    };
-
-    // Usage:
-    $('input:text,select,textarea').cancelZoom();
-})(jQuery);
-		},
-
-		onIncorrectPathClick: function() {
-			this._oModel.setProperty("/Source", this._sInvalidPath);
 		},
 		onLogin: function (oEvent) {
 			var self = this;
